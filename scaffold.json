@@ -24,20 +24,20 @@
   ],
 
   "content_files": {
-    "_comment": "Files that ship in the repo with real content. Skills and commands live in claude-skills/ in the repo but install to .claude/ in the vault.",
+    "_comment": "Every file uses repo_path (location in this repo) and install_path (destination in the vault). For most files they're identical — for skills/commands they differ because claude-skills/ maps to .claude/.",
     "system": [
-      { "path": "CLAUDE.md", "merge_strategy": "merge" },
-      { "path": ".ruyos-version", "merge_strategy": "replace" },
-      { "path": "Settings/System/AI Setup.md", "merge_strategy": "replace" },
-      { "path": "Settings/Resources/Resources.md", "merge_strategy": "replace" },
-      { "path": "Settings/Resources/Frameworks/Skill Template.md", "merge_strategy": "replace" }
+      { "repo_path": "CLAUDE.md", "install_path": "CLAUDE.md", "merge_strategy": "merge" },
+      { "repo_path": ".ruyos-version", "install_path": ".ruyos-version", "merge_strategy": "replace" },
+      { "repo_path": "Settings/System/AI Setup.md", "install_path": "Settings/System/AI Setup.md", "merge_strategy": "replace" },
+      { "repo_path": "Settings/Resources/Resources.md", "install_path": "Settings/Resources/Resources.md", "merge_strategy": "replace" },
+      { "repo_path": "Settings/Resources/Frameworks/Skill Template.md", "install_path": "Settings/Resources/Frameworks/Skill Template.md", "merge_strategy": "replace" }
     ],
     "templates": [
-      { "path": "Settings/Templates/Daily Note.md", "merge_strategy": "skip_if_modified" },
-      { "path": "Settings/Templates/Meeting Note.md", "merge_strategy": "skip_if_modified" },
-      { "path": "Settings/Templates/New Project.md", "merge_strategy": "skip_if_modified" },
-      { "path": "Settings/Templates/Session Note.md", "merge_strategy": "skip_if_modified" },
-      { "path": "Settings/Templates/Weekly Review.md", "merge_strategy": "skip_if_modified" }
+      { "repo_path": "Settings/Templates/Daily Note.md", "install_path": "Settings/Templates/Daily Note.md", "merge_strategy": "skip_if_modified" },
+      { "repo_path": "Settings/Templates/Meeting Note.md", "install_path": "Settings/Templates/Meeting Note.md", "merge_strategy": "skip_if_modified" },
+      { "repo_path": "Settings/Templates/New Project.md", "install_path": "Settings/Templates/New Project.md", "merge_strategy": "skip_if_modified" },
+      { "repo_path": "Settings/Templates/Session Note.md", "install_path": "Settings/Templates/Session Note.md", "merge_strategy": "skip_if_modified" },
+      { "repo_path": "Settings/Templates/Weekly Review.md", "install_path": "Settings/Templates/Weekly Review.md", "merge_strategy": "skip_if_modified" }
     ],
     "skills": [
       { "repo_path": "claude-skills/skills/start-day/SKILL.md", "install_path": ".claude/skills/start-day/SKILL.md", "merge_strategy": "replace" },

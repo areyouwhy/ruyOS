@@ -102,6 +102,12 @@ cp -r <repo-path>/.obsidian <vault-path>/.obsidian
 
 This gives users a working Obsidian setup out of the box — daily notes configured, templates pointed at the right folder, and community plugins ready to enable.
 
+**Manifest:** Copy `.ruyos-manifest.json` from the repo to the vault root. This file contains SHA-256 hashes of every installed file. The update skill uses it to detect changes without reading every file.
+
+```bash
+cp <repo-path>/.ruyos-manifest.json <vault-path>/.ruyos-manifest.json
+```
+
 ### Step 6: Generate starter files
 
 Read `scaffold.json` → `generated_files.files` array. For each entry, create the file at `<vault-path>/<path>` using the frontmatter, heading, and body defined in the manifest. Skip any file that already exists.

@@ -29,27 +29,31 @@ git clone https://github.com/areyouwhy/ruyOS.git /tmp/ruyos-latest
 
 Read the `.ruyos-version` from the latest source. Display both versions to the user, then **always proceed to Step 3 to diff the actual files** — even if the versions match. The version is a label, not a gate. Real changes are detected by comparing file contents, not version strings. Only skip the diff if the user explicitly says "never mind" or cancels.
 
-### Step 3: Diff and categorize changes
+### Step 3: Diff using manifests
 
-Compare the local vault against the latest repo. Categorize every difference:
+The fast path. Instead of reading every file, compare two small JSON files:
 
-**New skills** — Skills in the repo's `claude-skills/skills/` that don't exist in the local `.claude/skills/`.
+1. **Local manifest** — Read `<vault>/.ruyos-manifest.json` (written at install/update time)
+2. **Repo manifest** — Read `/tmp/ruyos-latest/.ruyos-manifest.json` (from the cloned repo)
 
-**Updated skills** — Skills that exist in both but have different content. Compare SKILL.md files. Note: the repo stores skills in `claude-skills/skills/` but they install to `.claude/skills/` locally.
+Compare every entry by hash. Categorize into:
 
-**New templates** — Templates in `Settings/Templates/` that don't exist locally.
+**New files** — In repo manifest but not in local manifest. These need to be created. For `content_file` and `obsidian` sources, copy from the repo (remember: `claude-skills/skills/` in repo → `.claude/skills/` in vault). For `generated_file` sources, render from `scaffold.json` definitions.
 
-**Updated templates** — Templates that exist locally but differ from repo. Check if the user has modified them (compare against the version they were installed from, if possible).
+**Changed files** — In both manifests but hashes differ. The repo version is newer. Apply based on `merge_strategy`:
+- `replace` → overwrite with repo version
+- `merge` → append new content (e.g. CLAUDE.md routing entries)
+- `skip_if_modified` → check if user modified the file (hash their current file against the local manifest hash — if they match, safe to replace; if they differ, user customized it, skip)
+- `never_touch` → skip entirely
+- `skip_if_exists` → skip (file exists)
 
-**New generated files** — Read `scaffold.json` → `generated_files.files` from the repo. Check each entry's `path` against the local vault. Any file that doesn't exist locally is new and should be created using the frontmatter/heading/body (or raw_content) from the manifest. Respect each file's `merge_strategy` — for `replace` files, also check if existing ones differ and offer to update them.
+**Removed files** — In local manifest but not in repo manifest. Flag as deprecated for the user to decide.
 
-**Structural changes** — New folders from the repo's `scaffold.json` → `folders` array that don't exist locally. Create them.
+**Unchanged** — Hashes match. Skip entirely.
 
-**Updated system files** — Changes to AI Setup.md, Resources.md, Intelligence.md, or other system-owned files (merge_strategy: `replace`).
+Also check `scaffold.json` → `folders` for any new folders that need to be created.
 
-**Obsidian config** — Compare `.obsidian/` between repo and local vault. The repo's `.obsidian/` includes app settings and bundled plugins (calendar, dataview, templater, color-folders-files). Strategy: `skip_if_exists` — only copy files that don't exist locally. Never overwrite user's Obsidian customizations (themes, workspace, hotkeys, etc.).
-
-**Deprecations** — Skills or files in the local vault that no longer exist in the repo.
+If `.ruyos-manifest.json` is missing from the vault (pre-manifest install), fall back to reading files directly and comparing against the repo. After the update, write the manifest so future updates are fast.
 
 ### Step 4: Present the update plan
 
@@ -107,9 +111,9 @@ When merging CLAUDE.md:
 4. Append new entries to the appropriate tables
 5. Preserve all existing content, including user-added living rules
 
-### Step 7: Update version
+### Step 7: Update version and manifest
 
-Write the new version to `.ruyos-version`.
+Write the new version to `.ruyos-version` and copy the repo's `.ruyos-manifest.json` to the vault, replacing the old one. This ensures the next update can diff efficiently against what was just installed.
 
 ### Step 8: Report
 

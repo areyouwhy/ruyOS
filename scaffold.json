@@ -28,7 +28,8 @@
     "_comment": "Files that exist as actual files in the repo. setup-ruyos copies these to the vault. repo_path is where to find them in the repo, install_path is where they go in the vault.",
     "system": [
       { "repo_path": "CLAUDE.md", "install_path": "CLAUDE.md", "merge_strategy": "merge" },
-      { "repo_path": ".ruyos-version", "install_path": ".ruyos-version", "merge_strategy": "replace" }
+      { "repo_path": ".ruyos-version", "install_path": ".ruyos-version", "merge_strategy": "replace" },
+      { "repo_path": ".ruyos-manifest.json", "install_path": ".ruyos-manifest.json", "merge_strategy": "replace" }
     ],
     "obsidian": {
       "_comment": "Obsidian config and community plugins. Copied as a directory tree. skip_if_exists prevents overwriting user customizations on update.",

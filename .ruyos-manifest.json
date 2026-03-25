@@ -1,0 +1,370 @@
+{
+  "version": "1988.02.24",
+  "files": {
+    "CLAUDE.md": {
+      "hash": "28bb07467cb8",
+      "merge_strategy": "merge",
+      "source": "content_file"
+    },
+    ".ruyos-version": {
+      "hash": "98755b9ad1cf",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".ruyos-manifest.json": {
+      "hash": "94ea7289e72b",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/start-day/SKILL.md": {
+      "hash": "3ef981900d5d",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/end-day/SKILL.md": {
+      "hash": "4ba8f4767d29",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/end-session/SKILL.md": {
+      "hash": "6057a5c629be",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/remember/SKILL.md": {
+      "hash": "b8fc8cfa3562",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/inbox/SKILL.md": {
+      "hash": "6461ed2a2dff",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/review/SKILL.md": {
+      "hash": "1bc63c65211a",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/setup-ruyos/SKILL.md": {
+      "hash": "e1edb5f1d205",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/skills/update-ruyos/SKILL.md": {
+      "hash": "2fc83f2d3f48",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/start-day.md": {
+      "hash": "adce9146b887",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/end-day.md": {
+      "hash": "147fb383bf96",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/end-session.md": {
+      "hash": "d2e693a3a334",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/remember.md": {
+      "hash": "d442c6bc9c2c",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/inbox.md": {
+      "hash": "8b9ad3fbcb3f",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/review.md": {
+      "hash": "24a3d2d3643c",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/setup-ruyos.md": {
+      "hash": "72fcf96cc003",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".claude/commands/update-ruyos.md": {
+      "hash": "48193a1bea6f",
+      "merge_strategy": "replace",
+      "source": "content_file"
+    },
+    ".obsidian/app.json": {
+      "hash": "44136fa355b3",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/core-plugins.json": {
+      "hash": "763cf20a921f",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/community-plugins.json": {
+      "hash": "9f178edd4025",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/graph.json": {
+      "hash": "93d86383d70b",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/daily-notes.json": {
+      "hash": "69bb6a4dab9b",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/color-folders-files/styles.css": {
+      "hash": "f935ebb430db",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/color-folders-files/data.json": {
+      "hash": "2cc52e950be8",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/color-folders-files/main.js": {
+      "hash": "3e89351b48ee",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/color-folders-files/manifest.json": {
+      "hash": "6d83a3dfdd28",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/calendar/styles.css": {
+      "hash": "486b450076f3",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/calendar/data.json": {
+      "hash": "6c148fddf65f",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/calendar/main.js": {
+      "hash": "64d1c6c62080",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/calendar/manifest.json": {
+      "hash": "314fc17929a2",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/dataview/styles.css": {
+      "hash": "3306dd9032e0",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/dataview/main.js": {
+      "hash": "6bb1cf7010af",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/dataview/manifest.json": {
+      "hash": "9235db47112d",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/templater-obsidian/styles.css": {
+      "hash": "f7d4ee5bd4ec",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/templater-obsidian/data.json": {
+      "hash": "629ea33e5cf9",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/templater-obsidian/main.js": {
+      "hash": "390be01a6e5b",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    ".obsidian/plugins/templater-obsidian/manifest.json": {
+      "hash": "bef3e8262465",
+      "merge_strategy": "skip_if_exists",
+      "source": "obsidian"
+    },
+    "Settings/System/AI Setup.md": {
+      "hash": "77527367f1a5",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Settings/Resources/Resources.md": {
+      "hash": "f1fbdad35a62",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Settings/Resources/Frameworks/Skill Template.md": {
+      "hash": "8f25adc7a8a5",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Settings/Templates/Daily Note.md": {
+      "hash": "1666b69d8c58",
+      "merge_strategy": "skip_if_modified",
+      "source": "generated_file"
+    },
+    "Settings/Templates/Meeting Note.md": {
+      "hash": "bc389e174354",
+      "merge_strategy": "skip_if_modified",
+      "source": "generated_file"
+    },
+    "Settings/Templates/New Project.md": {
+      "hash": "ceaa3eca915f",
+      "merge_strategy": "skip_if_modified",
+      "source": "generated_file"
+    },
+    "Settings/Templates/Session Note.md": {
+      "hash": "6abc6248510a",
+      "merge_strategy": "skip_if_modified",
+      "source": "generated_file"
+    },
+    "Settings/Templates/Weekly Review.md": {
+      "hash": "6b07117b9599",
+      "merge_strategy": "skip_if_modified",
+      "source": "generated_file"
+    },
+    "Context/Context.md": {
+      "hash": "408c3b7788aa",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Workflow/Workflow.md": {
+      "hash": "03ba201e5c96",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Projects/Projects.md": {
+      "hash": "0217b9ea2c51",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Settings/Settings.md": {
+      "hash": "8966f0d2c05f",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Workflow/Home.md": {
+      "hash": "76ffa65689e9",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Workflow/Intelligence/Intelligence.md": {
+      "hash": "223cadd03fcb",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Workflow/Intelligence/Decisions/Decisions.md": {
+      "hash": "2d0dec3646db",
+      "merge_strategy": "skip_if_modified",
+      "source": "generated_file"
+    },
+    "Workflow/Tasks/Active.md": {
+      "hash": "022ad9d2125b",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Workflow/Tasks/Backlog.md": {
+      "hash": "47251160c225",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Workflow/Tasks/Done.md": {
+      "hash": "8e664b1eca58",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Settings/System/Computer Overview.md": {
+      "hash": "784cb85bae03",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Personal/About Me.md": {
+      "hash": "a50b974dfbbd",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Personal/Current Focus.md": {
+      "hash": "82a819f85762",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Personal/Goals.md": {
+      "hash": "0ed8f7bcf59f",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Personal/Interests & Hobbies.md": {
+      "hash": "607983d8ad4b",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Personal/People.md": {
+      "hash": "6d130d70fd59",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Personal/Preferences.md": {
+      "hash": "63a89b6fbc74",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Brand.md": {
+      "hash": "f3c27ee00768",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Communication Style.md": {
+      "hash": "85b86daf0665",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/ICP.md": {
+      "hash": "acd71baeb09f",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Pain Points.md": {
+      "hash": "7c2d3cb225ee",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Strategy.md": {
+      "hash": "2aededea7320",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Tech Stack.md": {
+      "hash": "2c9e8a51e344",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Work & Career.md": {
+      "hash": "cd1c28f01dc9",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Work.md": {
+      "hash": "740cc5006447",
+      "merge_strategy": "never_touch",
+      "source": "generated_file"
+    },
+    "Context/Professional/Writing Preferences.md": {
+      "hash": "f0620fd3ba07",
+      "merge_strategy": "merge",
+      "source": "generated_file"
+    }
+  }
+}

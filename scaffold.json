@@ -139,6 +139,13 @@
         "body": "System configuration, templates, and reusable resources. The infrastructure layer.\n\n## Areas\n\n- [[AI Setup]] — How ruyOS works as an AI-powered second brain\n- [[Computer Overview]] — Hardware, software, and dev environment\n- [[Resources]] — Reusable prompts, frameworks, examples, snippets\n\n## Templates\n\nStarter templates used by skills and Templater:\n\n- **Daily Note** — Created by `/start-day`\n- **Meeting Note** — For meeting capture\n- **New Project** — Project scaffolding\n- **Session Note** — Work block documentation\n- **Weekly Review** — Weekly reflection"
       },
       {
+        "path": "Settings/Templates/Templates.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Templates", "tags": ["settings", "hub"] },
+        "heading": "Templates",
+        "body": "Starter templates used by skills and Templater. These define the structure for new notes — customize them to fit your workflow.\n\n## Available templates\n\n- **[[Daily Note]]** — Created by `/start-day`. Sections for focus, log, decisions, learnings, and tomorrow\n- **[[Meeting Note]]** — Capture attendees, notes, decisions, and action items\n- **[[New Project]]** — Scaffold a new project folder with goals, status, and session tracking\n- **[[Session Note]]** — Document a single work block within a project\n- **[[Weekly Review]]** — Reflect on the week: wins, misses, decisions, and next priorities\n\n## How templates work\n\nTemplates use `{{ variable }}` placeholders (e.g. `{{ date }}`, `{{ project_name }}`). When Templater or a skill creates a new note from a template, it fills in the placeholders automatically.\n\n## Customizing\n\nThese are yours to modify. If you change a template, ruyOS updates won't overwrite your version — the update skill skips modified templates."
+      },
+      {
         "path": "Workflow/Home.md",
         "merge_strategy": "replace",
         "frontmatter": { "title": "Home", "tags": ["home"] },

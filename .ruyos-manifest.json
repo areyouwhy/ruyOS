@@ -12,7 +12,7 @@
       "source": "content_file"
     },
     ".ruyos-manifest.json": {
-      "hash": "94ea7289e72b",
+      "hash": "73ac52611d10",
       "merge_strategy": "replace",
       "source": "content_file"
     },
@@ -253,6 +253,11 @@
     },
     "Settings/Settings.md": {
       "hash": "8966f0d2c05f",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Settings/Templates/Templates.md": {
+      "hash": "f8a938b2abe4",
       "merge_strategy": "replace",
       "source": "generated_file"
     },

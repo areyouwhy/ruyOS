@@ -23,11 +23,8 @@ Read `.ruyos-version` in the vault root. If it doesn't exist, tell the user this
 Pull or fetch the latest from the ruyOS GitHub repo:
 
 ```bash
-# If inside a git repo
-git fetch origin
-
-# If not a git repo, clone to a temp directory for comparison
-git clone <ruyos-repo-url> /tmp/ruyos-latest
+# Clone the latest to a temp directory for comparison
+git clone https://github.com/areyouwhy/ruyOS.git /tmp/ruyos-latest
 ```
 
 Read the `.ruyos-version` from the latest source. Compare with local.
@@ -38,9 +35,9 @@ If versions match, tell the user they're up to date and stop (unless they say "f
 
 Compare the local vault against the latest repo. Categorize every difference:
 
-**New skills** — Skills in the repo's `.claude/skills/` that don't exist locally.
+**New skills** — Skills in the repo's `claude-skills/skills/` that don't exist in the local `.claude/skills/`.
 
-**Updated skills** — Skills that exist in both but have different content. Compare SKILL.md files.
+**Updated skills** — Skills that exist in both but have different content. Compare SKILL.md files. Note: the repo stores skills in `claude-skills/skills/` but they install to `.claude/skills/` locally.
 
 **New templates** — Templates in `Settings/Templates/` that don't exist locally.
 

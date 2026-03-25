@@ -24,7 +24,7 @@
   ],
 
   "content_files": {
-    "_comment": "Files that ship in the repo with real content. setup-ruyos copies these as-is.",
+    "_comment": "Files that ship in the repo with real content. Skills and commands live in claude-skills/ in the repo but install to .claude/ in the vault.",
     "system": [
       { "path": "CLAUDE.md", "merge_strategy": "merge" },
       { "path": ".ruyos-version", "merge_strategy": "replace" },
@@ -40,24 +40,24 @@
       { "path": "Settings/Templates/Weekly Review.md", "merge_strategy": "skip_if_modified" }
     ],
     "skills": [
-      { "path": ".claude/skills/start-day/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/end-day/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/end-session/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/remember/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/inbox/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/review/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/setup-ruyos/SKILL.md", "merge_strategy": "replace" },
-      { "path": ".claude/skills/update-ruyos/SKILL.md", "merge_strategy": "replace" }
+      { "repo_path": "claude-skills/skills/start-day/SKILL.md", "install_path": ".claude/skills/start-day/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/end-day/SKILL.md", "install_path": ".claude/skills/end-day/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/end-session/SKILL.md", "install_path": ".claude/skills/end-session/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/remember/SKILL.md", "install_path": ".claude/skills/remember/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/inbox/SKILL.md", "install_path": ".claude/skills/inbox/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/review/SKILL.md", "install_path": ".claude/skills/review/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/setup-ruyos/SKILL.md", "install_path": ".claude/skills/setup-ruyos/SKILL.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/skills/update-ruyos/SKILL.md", "install_path": ".claude/skills/update-ruyos/SKILL.md", "merge_strategy": "replace" }
     ],
     "commands": [
-      { "path": ".claude/commands/start-day.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/end-day.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/end-session.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/remember.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/inbox.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/review.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/setup-ruyos.md", "merge_strategy": "replace" },
-      { "path": ".claude/commands/update-ruyos.md", "merge_strategy": "replace" }
+      { "repo_path": "claude-skills/commands/start-day.md", "install_path": ".claude/commands/start-day.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/end-day.md", "install_path": ".claude/commands/end-day.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/end-session.md", "install_path": ".claude/commands/end-session.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/remember.md", "install_path": ".claude/commands/remember.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/inbox.md", "install_path": ".claude/commands/inbox.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/review.md", "install_path": ".claude/commands/review.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/setup-ruyos.md", "install_path": ".claude/commands/setup-ruyos.md", "merge_strategy": "replace" },
+      { "repo_path": "claude-skills/commands/update-ruyos.md", "install_path": ".claude/commands/update-ruyos.md", "merge_strategy": "replace" }
     ]
   },
 

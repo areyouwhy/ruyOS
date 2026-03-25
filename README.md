@@ -9,7 +9,7 @@ ruyOS is an Obsidian vault with an AI skill layer. You fill it with your context
 ### Claude Code
 
 ```bash
-git clone https://github.com/your-username/ruyos.git my-vault
+git clone https://github.com/areyouwhy/ruyOS.git my-vault
 cd my-vault
 claude
 # then run: /setup-ruyos

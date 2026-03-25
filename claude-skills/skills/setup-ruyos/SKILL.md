@@ -61,7 +61,9 @@ Create these files if they don't exist (never overwrite):
 - All starter files in `Context/` (empty with frontmatter)
 - All task files (`Active.md`, `Backlog.md`, `Done.md`)
 
-Use the contents from the ruyOS repo/scaffold as the source. If running from a cloned repo, the files are already present — just verify them.
+Use the contents from `scaffold.json` as the source for generated files. For system files that ship in the repo (CLAUDE.md, templates, etc.), copy them from their locations in the repo.
+
+**Important:** In the repo, skills and commands live in `claude-skills/` (not `.claude/`). This is intentional — `.claude/` would be auto-detected by Claude Code when browsing the repo. During setup, copy `claude-skills/skills/` → `.claude/skills/` and `claude-skills/commands/` → `.claude/commands/`.
 
 ### Step 4: Install dependencies
 

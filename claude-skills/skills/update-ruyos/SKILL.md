@@ -16,7 +16,7 @@ Pull the latest version from the ruyOS GitHub repo, compare with the local vault
 
 ### Step 1: Check current version
 
-Read `.ruyos-version` in the vault root. If it doesn't exist, tell the user this vault may not have been set up with setup-ruyos and suggest running setup first.
+Read `.ruyos-version` in the vault root. The version is a date in `YYYY.MM.DD` format (e.g. `2026.03.25`). If it doesn't exist, tell the user this vault may not have been set up with setup-ruyos and suggest running setup first.
 
 ### Step 2: Fetch latest version
 
@@ -27,9 +27,7 @@ Pull or fetch the latest from the ruyOS GitHub repo:
 git clone https://github.com/areyouwhy/ruyOS.git /tmp/ruyos-latest
 ```
 
-Read the `.ruyos-version` from the latest source. Compare with local.
-
-If versions match, tell the user they're up to date and stop (unless they say "force update" or "check anyway").
+Read the `.ruyos-version` from the latest source. Display both versions to the user, then **always proceed to Step 3 to diff the actual files** — even if the versions match. The version is a label, not a gate. Real changes are detected by comparing file contents, not version strings. Only skip the diff if the user explicitly says "never mind" or cancels.
 
 ### Step 3: Diff and categorize changes
 

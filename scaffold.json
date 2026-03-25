@@ -1,5 +1,6 @@
 {
-  "version": "1.0.0",
+  "version": "1988.02.24",
+  "version_format": "YYYY.MM.DD — date-based versioning. Bump this and .ruyos-version together on every release.",
   "description": "ruyOS vault scaffold — the single source of truth for setup and update skills",
 
   "folders": [

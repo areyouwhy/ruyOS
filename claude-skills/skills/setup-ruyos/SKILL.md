@@ -169,7 +169,7 @@ Verify the vault is functional:
 1. `<vault-path>/CLAUDE.md` exists and contains routing tables
 2. All required folders exist
 3. All starter files have valid frontmatter
-4. `.ruyos-version` exists
+4. `.ruyos-version` exists and contains a date in `YYYY.MM.DD` format
 5. Skills are present in `<vault-path>/.claude/skills/`
 6. At least one Context file has user content (from the interview)
 

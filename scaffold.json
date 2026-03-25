@@ -24,20 +24,10 @@
   ],
 
   "content_files": {
-    "_comment": "Every file uses repo_path (location in this repo) and install_path (destination in the vault). For most files they're identical — for skills/commands they differ because claude-skills/ maps to .claude/.",
+    "_comment": "Files that exist as actual files in the repo. setup-ruyos copies these to the vault. repo_path is where to find them in the repo, install_path is where they go in the vault.",
     "system": [
       { "repo_path": "CLAUDE.md", "install_path": "CLAUDE.md", "merge_strategy": "merge" },
-      { "repo_path": ".ruyos-version", "install_path": ".ruyos-version", "merge_strategy": "replace" },
-      { "repo_path": "Settings/System/AI Setup.md", "install_path": "Settings/System/AI Setup.md", "merge_strategy": "replace" },
-      { "repo_path": "Settings/Resources/Resources.md", "install_path": "Settings/Resources/Resources.md", "merge_strategy": "replace" },
-      { "repo_path": "Settings/Resources/Frameworks/Skill Template.md", "install_path": "Settings/Resources/Frameworks/Skill Template.md", "merge_strategy": "replace" }
-    ],
-    "templates": [
-      { "repo_path": "Settings/Templates/Daily Note.md", "install_path": "Settings/Templates/Daily Note.md", "merge_strategy": "skip_if_modified" },
-      { "repo_path": "Settings/Templates/Meeting Note.md", "install_path": "Settings/Templates/Meeting Note.md", "merge_strategy": "skip_if_modified" },
-      { "repo_path": "Settings/Templates/New Project.md", "install_path": "Settings/Templates/New Project.md", "merge_strategy": "skip_if_modified" },
-      { "repo_path": "Settings/Templates/Session Note.md", "install_path": "Settings/Templates/Session Note.md", "merge_strategy": "skip_if_modified" },
-      { "repo_path": "Settings/Templates/Weekly Review.md", "install_path": "Settings/Templates/Weekly Review.md", "merge_strategy": "skip_if_modified" }
+      { "repo_path": ".ruyos-version", "install_path": ".ruyos-version", "merge_strategy": "replace" }
     ],
     "skills": [
       { "repo_path": "claude-skills/skills/start-day/SKILL.md", "install_path": ".claude/skills/start-day/SKILL.md", "merge_strategy": "replace" },
@@ -62,136 +52,204 @@
   },
 
   "generated_files": {
-    "_comment": "Files that setup-ruyos creates at install time. Not in the repo — generated from these definitions.",
+    "_comment": "Files generated at install time from these definitions. Not stored as files in the repo.",
     "files": [
       {
+        "path": "Settings/System/AI Setup.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "AI Setup", "tags": ["ai", "system"] },
+        "heading": "AI setup",
+        "body": "How ruyOS works as an AI-powered second brain.\n\n## Philosophy\n\nThe vault is the single source of truth. AI agents (Claude via Cowork, Claude Code, or any other provider) read and write to this vault. The CLAUDE.md file at the root is the navigation layer that tells any AI agent how to find and store information.\n\n## Key components\n\n- **CLAUDE.md** — Brain file with knowledge routing and save routing tables\n- **Context/Personal/** — Identity, goals, preferences, people\n- **Context/Professional/** — Work, strategy, brand, writing style, ICP, tech stack\n- **Workflow/Intelligence/** — Accumulated knowledge from meetings, decisions, research\n- **Settings/Resources/** — Reusable prompts, frameworks, examples\n- **Workflow/Tasks/** — AI-readable task tracking\n\n## Skills\n\nruyOS ships with workflow skills in `.claude/skills/`:\n\n| Skill | What it does |\n|-------|-------------|\n| **start-day** | Morning briefing and daily note creation |\n| **end-day** | Daily wrap-up, archive, and reflection |\n| **end-session** | Checkpoint after a work block or iteration |\n| **remember** | Save information to the right vault location |\n| **inbox** | Triage items in Workflow/Capture/ to permanent homes |\n| **review** | Realign priorities against goals and focus |\n| **setup-ruyos** | Bootstrap a fresh vault |\n| **update-ruyos** | Pull latest updates from the ruyOS repo |\n\nSkills reference vault context instead of embedding copies. One update to a context file benefits every skill.\n\n## Tips\n\n- Every new Cowork/Claude Code session should point to this vault folder\n- When the AI learns a rule or preference, tell it to save it to the right place\n- If navigation breaks, update CLAUDE.md — it's the bridge\n- Put unsorted captures in Workflow/Capture/ and process later"
+      },
+      {
+        "path": "Settings/Resources/Resources.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Resources", "tags": ["resource"] },
+        "heading": "Resources",
+        "body": "Reusable building blocks — prompts, frameworks, examples, and snippets. Think of this as a library that skills and agents can pull from.\n\n## Subfolders\n\n- **Prompts/** — Proven prompts for recurring tasks\n- **Frameworks/** — Mental models, decision frameworks, analysis templates\n- **Examples/** — Good output examples (posts, emails, presentations) for AI reference\n- **Snippets/** — Reusable code snippets, text blocks, email templates\n\n## How to use\n\nWhen building a skill, point it to resources here instead of embedding copies. When you produce something good, save an example here for future reference."
+      },
+      {
+        "path": "Settings/Resources/Frameworks/Skill Template.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Skill Template", "tags": ["resource", "framework", "skill"] },
+        "heading": "Skill template",
+        "body": "> [!info] Purpose\n> Use this template when creating new skills for Claude Code or Cowork. The key principle: skills should point to vault context, not embed their own copies.\n\n## Template\n\n```markdown\n---\nname: skill-name\ndescription: \"When to trigger this skill. Be specific about trigger phrases and use cases.\"\n---\n\n# Skill Name\n\nOne-sentence description of what the skill produces or automates.\n\n## Context sources\n\nRead these files from the vault before executing:\n\n- Context/Professional/Writing Preferences.md\n- Context/Professional/ICP.md\n- [Add other relevant context files]\n\n## What to do\n\n1. [Step 1 — what to do first]\n2. [Step 2 — what to do next]\n3. [Step 3 — and so on]\n\n## Output format\n\n[Describe what the output should look like — length, structure, tone.]\n\n## Rules\n\n- Follow all rules in Context/Professional/Writing Preferences.md\n- [Add skill-specific rules here]\n```\n\n## Why this pattern\n\n- **No duplicated context.** When you update Writing Preferences once, every skill that references it gets the update.\n- **Faster skill creation.** You only write the process, not the context.\n- **Consistent output.** All skills pull from the same voice and style definitions."
+      },
+      {
+        "path": "Settings/Templates/Daily Note.md",
+        "merge_strategy": "skip_if_modified",
+        "raw_content": "---\ntitle: \"{{ date }}\"\ntags:\n  - daily\ndate: \"{{ date }}\"\n---\n\n# {{ date }}\n\n## Focus\n\nWhat I'm working on today. Pull from [[Active]] tasks.\n\n-\n\n## Log\n\nWhat happened, what I worked on, key events.\n\n-\n\n## Decisions\n\nAny decisions made today. Copy significant ones to [[Intelligence/Decisions/Decisions|Decision Log]].\n\n-\n\n## Learned\n\nThings I learned or insights from today.\n\n-\n\n## Tomorrow\n\nWhat to carry forward.\n\n-"
+      },
+      {
+        "path": "Settings/Templates/Meeting Note.md",
+        "merge_strategy": "skip_if_modified",
+        "raw_content": "---\ntitle: \"{{ date }} — {{ meeting_name }}\"\ntags:\n  - intelligence\n  - meeting\ndate: \"{{ date }}\"\n---\n\n# {{ meeting_name }}\n\n**Date:** {{ date }}\n**Attendees:**\n**Context:**\n\n## Notes\n\n-\n\n## Decisions\n\n-\n\n## Action items\n\n- [ ]\n\n## Follow-up\n\n-"
+      },
+      {
+        "path": "Settings/Templates/New Project.md",
+        "merge_strategy": "skip_if_modified",
+        "raw_content": "---\ntitle: \"{{ project_name }}\"\ntags:\n  - project\nstatus: planning\ndate: \"{{ date }}\"\nlast-updated: \"{{ date }}\"\ndirectory: \"{{ directory_name }}\"\ncontext-dependencies: []\n---\n\n# {{ project_name }}\n\n## Vision\n\nWhat is this project and why does it exist?\n\n## Goals\n\n-\n\n## Status\n\nCurrent state of the project.\n\n## Log\n\n- {{ date }}: Project created\n\n## Session notes\n\n```dataview\nTABLE date AS \"Date\", title AS \"Summary\"\nFROM \"Projects/{{ project_name }}\"\nWHERE contains(tags, \"session\")\nSORT date DESC\n```\n\n## See also\n\n-"
+      },
+      {
+        "path": "Settings/Templates/Session Note.md",
+        "merge_strategy": "skip_if_modified",
+        "raw_content": "---\ntitle: \"{{ date }} — {{ summary }}\"\ntags:\n  - session\n  - project\ndate: \"{{ date }}\"\n---\n\n# {{ summary }}\n\n## What I did\n\n-\n\n## Decisions\n\n-\n\n## Issues & blockers\n\n-\n\n## Next steps\n\n-"
+      },
+      {
+        "path": "Settings/Templates/Weekly Review.md",
+        "merge_strategy": "skip_if_modified",
+        "raw_content": "---\ntitle: \"Week of {{ date }}\"\ntags:\n  - review\n  - weekly\ndate: \"{{ date }}\"\n---\n\n# Week of {{ date }}\n\n## What I accomplished\n\n-\n\n## What didn't get done\n\n-\n\n## Key decisions this week\n\n-\n\n## Priorities for next week\n\n-\n\n## Reflections\n\n-"
+      },
+      {
         "path": "Workflow/Home.md",
+        "merge_strategy": "replace",
         "frontmatter": { "title": "Home", "tags": ["home"] },
         "heading": "ruyOS",
         "body": "Welcome to the vault. This is the operating system for your life, work, and projects — powered by Obsidian and AI.\n\nRun `/start-day` to begin, or explore the folders to set up your context."
       },
       {
         "path": "Workflow/Intelligence/Intelligence.md",
+        "merge_strategy": "replace",
         "frontmatter": { "title": "Intelligence", "tags": ["intelligence"] },
         "heading": "Intelligence",
         "body": "Accumulated knowledge — meetings, decisions, research, and insights. This is the vault's long-term memory.\n\n## Subfolders\n\n- **Meetings/** — Meeting transcripts and notes. Format: `YYYY-MM-DD <meeting-name>.md`\n- **Decisions/** — Significant decisions with rationale, context, and date\n- **Research/** — Market research, competitor analysis, technology evaluations\n- **Insights/** — Observations, patterns, things learned over time"
       },
       {
         "path": "Workflow/Intelligence/Decisions/Decisions.md",
+        "merge_strategy": "skip_if_modified",
         "frontmatter": { "title": "Decision Log", "tags": ["intelligence", "decisions"] },
         "heading": "Decision log",
         "body": "Significant decisions with rationale. Newest first.\n\n<!-- Format for new entries:\n## YYYY-MM-DD — Decision title\n**Context:** Why this came up\n**Decision:** What was decided\n**Rationale:** Why this over alternatives\n**Impact:** What changed as a result\n-->"
       },
       {
         "path": "Workflow/Tasks/Active.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Active", "tags": ["task"] },
         "heading": "Active tasks",
         "body": "Current to-do list. AI agents add and update tasks here.\n\n## Priority\n\n-\n\n## In progress\n\n-\n\n## Up next\n\n-"
       },
       {
         "path": "Workflow/Tasks/Backlog.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Backlog", "tags": ["task"] },
         "heading": "Backlog",
         "body": "Things to do eventually. Not active, but not forgotten.\n\n-"
       },
       {
         "path": "Workflow/Tasks/Done.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Done", "tags": ["task"] },
         "heading": "Done",
         "body": "Completed tasks, organized by month.\n\n<!-- Format:\n## YYYY-MM — Month Name\n\n- Task description (completed YYYY-MM-DD)\n-->"
       },
       {
         "path": "Settings/System/Computer Overview.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Computer Overview", "tags": ["system"] },
         "heading": "Computer overview",
         "body": "Hardware, software, and development environment.\n\n## Hardware\n\n-\n\n## Operating system\n\n-\n\n## Key software\n\n-\n\n## Development tools\n\n-"
       },
       {
         "path": "Context/Personal/About Me.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "About Me", "tags": ["context", "me"] },
         "heading": "About me",
         "body": "A snapshot of who you are. Fill this in so AI agents have context when helping you.\n\n## The basics\n\n**Name:**\n**Location:**\n**Role:**\n\n## In a nutshell\n\nA few sentences about who you are, what you care about, and how you work.\n\n## Values\n\nWhat matters most to you — in work and life.\n\n-"
       },
       {
         "path": "Context/Personal/Current Focus.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Current Focus", "tags": ["context", "me"] },
         "heading": "Current focus",
         "body": "What you're actively focused on right now. This is the living priority list — update it whenever priorities shift.\n\n## Primary focus\n\nWhat's the main thing you're working on or thinking about?\n\n## Active threads\n\nOngoing workstreams, projects, or areas of attention.\n\n-\n\n## Parked\n\nThings that matter but aren't active right now.\n\n-"
       },
       {
         "path": "Context/Personal/Goals.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Goals", "tags": ["context", "me"] },
         "heading": "Goals",
         "body": "What you're working toward — short and long term.\n\n## This year\n\n-\n\n## Next 2-3 years\n\n-\n\n## Long term\n\n-\n\n## Anti-goals\n\nThings you're deliberately not optimizing for.\n\n-"
       },
       {
         "path": "Context/Personal/Interests & Hobbies.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Interests & Hobbies", "tags": ["context", "me"] },
         "heading": "Interests & hobbies",
         "body": "What you do outside of work.\n\n## Active hobbies\n\n-\n\n## Interests\n\n-\n\n## Want to explore\n\n-"
       },
       {
         "path": "Context/Personal/People.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "People", "tags": ["context", "me"] },
         "heading": "People",
         "body": "Key people in your life and work. Helps AI agents understand relationships and context.\n\n<!-- Format for new entries:\n## Name\n**Role/relationship:**\n**Context:**\n**Notes:**\n-->"
       },
       {
         "path": "Context/Personal/Preferences.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Preferences", "tags": ["context", "me"] },
         "heading": "Preferences",
         "body": "How you like things done. AI agents should follow these when producing output or making suggestions.\n\n## Work style\n\n-\n\n## Communication\n\n-\n\n## Tools & environment\n\n-\n\n## Pet peeves\n\nThings you don't want AI agents to do.\n\n-"
       },
       {
         "path": "Context/Professional/Brand.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Brand", "tags": ["context", "work"] },
         "heading": "Brand",
         "body": "Your personal or professional brand identity.\n\n## Voice\n\nHow you sound in writing and presentations.\n\n## Visual identity\n\nColors, fonts, logo, design preferences.\n\n## Positioning\n\nHow you want to be perceived professionally."
       },
       {
         "path": "Context/Professional/Communication Style.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Communication Style", "tags": ["context", "work"] },
         "heading": "Communication style",
         "body": "How you communicate across different channels and contexts.\n\n## General approach\n\n-\n\n## By channel\n\n### Email\n\n-\n\n### Slack / chat\n\n-\n\n### Presentations\n\n-\n\n### Social media\n\n-\n\n## Adapting to audience\n\nHow your style shifts depending on who you're talking to.\n\n-"
       },
       {
         "path": "Context/Professional/ICP.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "ICP", "tags": ["context", "work"] },
         "heading": "Ideal reader / audience profile",
         "body": "Who you're writing for and creating content for.\n\n## Primary audience\n\n-\n\n## What they care about\n\n-\n\n## Where they hang out\n\n-\n\n## How they talk\n\nLanguage, jargon, tone they expect.\n\n-"
       },
       {
         "path": "Context/Professional/Pain Points.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Pain Points", "tags": ["context", "work"] },
         "heading": "Pain points",
         "body": "What your audience or customers struggle with.\n\n## Common frustrations\n\n-\n\n## Unmet needs\n\n-\n\n## What they've tried\n\nSolutions they've already attempted.\n\n-"
       },
       {
         "path": "Context/Professional/Strategy.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Strategy", "tags": ["context", "work"] },
         "heading": "Strategy",
         "body": "Your personal and career strategy. Where you're headed and why.\n\n## Current positioning\n\n-\n\n## Where you want to be\n\n-\n\n## How you'll get there\n\n-\n\n## Bets\n\nThings you're deliberately investing time in.\n\n-"
       },
       {
         "path": "Context/Professional/Tech Stack.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Tech Stack", "tags": ["context", "work"] },
         "heading": "Tech stack",
         "body": "Languages, frameworks, tools, and platforms you use or know.\n\n## Languages\n\n-\n\n## Frameworks & libraries\n\n-\n\n## Tools & platforms\n\n-\n\n## Currently learning\n\n-"
       },
       {
         "path": "Context/Professional/Work & Career.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Work & Career", "tags": ["context", "work"] },
         "heading": "Work & career",
         "body": "Career history, skills, and professional identity.\n\n## Current role\n\n-\n\n## Career history\n\n<!-- Format:\n### Role — Company (Year-Year)\nWhat you did, what you learned, key achievements.\n-->\n\n## Core skills\n\n-\n\n## What makes you different\n\n-"
       },
       {
         "path": "Context/Professional/Work.md",
+        "merge_strategy": "never_touch",
         "frontmatter": { "title": "Work", "tags": ["context", "work"] },
         "heading": "Work",
         "body": "Your current employer, role, and what you're working on day to day.\n\n## Company\n\n-\n\n## Role\n\n-\n\n## What I own\n\n-\n\n## Team\n\n-\n\n## Current priorities\n\n-"
       },
       {
         "path": "Context/Professional/Writing Preferences.md",
+        "merge_strategy": "merge",
         "frontmatter": { "title": "Writing Preferences", "tags": ["context", "work"] },
         "heading": "Writing preferences",
         "body": "Tone, style, and rules for all written output. AI agents must follow these.\n\n## Voice\n\n-\n\n## Tone\n\n-\n\n## Living rules\n\nRules that accumulate over time. Add new ones as you discover preferences.\n\n- Active voice preferred\n- No filler words (just, simply, basically, actually)\n- Clear over clever — say what you mean\n- Sentence case for headings\n- American English spelling\n\n## Things to avoid\n\n-"

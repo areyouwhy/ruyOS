@@ -111,35 +111,53 @@ When merging CLAUDE.md:
 4. Append new entries to the appropriate tables
 5. Preserve all existing content, including user-added living rules
 
-### Step 7: Re-brand updated skills and commands
+### Step 7: Re-brand ALL skills and commands
 
-After applying changes, re-stamp the vault name prefix on any new or updated skills and commands. This ensures new skills added by the update are immediately identifiable in autocomplete.
+**THIS STEP IS MANDATORY — run it EVERY time, even if no files were updated.** The update process copies fresh skill/command files from the repo, which overwrites any existing branding. This step re-applies it.
 
-**Read the vault name** from `<vault>/.ruyos-config.json` → `vault_name` field. If the config file doesn't exist (pre-branding install), ask the user what their vault is called, then create the config file.
+**Read the vault name** from `<vault>/.ruyos-config.json` → `vault_name` field. If the config file doesn't exist (pre-branding install), ask the user: "What's your vault called? I need this to brand your commands so they're easy to find in autocomplete." Then create the config file.
 
-**Brand skills:** For every `SKILL.md` in `<vault>/.claude/skills/*/` that was added or updated in this run, find the `description:` line in the frontmatter and prepend `[<vault-name>]` to the description string — but only if it's not already branded.
+**Run this Python script** to brand ALL skills and commands. Use Python, not sed — sed behaves differently on macOS vs Linux.
 
-```bash
-VAULT_NAME=$(python3 -c "import json; print(json.load(open('<vault>/.ruyos-config.json'))['vault_name'])")
+```python
+import json, glob, os, re
 
-for skill in <vault>/.claude/skills/*/SKILL.md; do
-  if ! grep -q "description: \"\\[$VAULT_NAME\\]" "$skill"; then
-    sed -i "s/description: \"/description: \"[$VAULT_NAME] /" "$skill"
-  fi
-done
+VAULT = "<vault-path>"
+
+# Read vault name from config
+config_path = os.path.join(VAULT, ".ruyos-config.json")
+with open(config_path) as f:
+    VAULT_NAME = json.load(f)["vault_name"]
+
+prefix = f"[{VAULT_NAME}] "
+
+# Brand skill descriptions in YAML frontmatter
+for skill in glob.glob(os.path.join(VAULT, ".claude/skills/*/SKILL.md")):
+    with open(skill, "r") as f:
+        content = f.read()
+    # Remove any existing branding first (handles re-runs and name changes)
+    content = re.sub(r'(description:\s*")\[.*?\]\s*', r'\1', content)
+    # Add the prefix
+    content = re.sub(r'(description:\s*")', rf'\1{re.escape(prefix)}', content)
+    with open(skill, "w") as f:
+        f.write(content)
+
+# Brand command descriptions (first line of each .md file)
+for cmd in glob.glob(os.path.join(VAULT, ".claude/commands/*.md")):
+    with open(cmd, "r") as f:
+        lines = f.readlines()
+    if not lines:
+        continue
+    # Remove any existing branding from first line
+    first = re.sub(r'^\[.*?\]\s*', '', lines[0])
+    lines[0] = prefix + first
+    with open(cmd, "w") as f:
+        f.writelines(lines)
+
+print(f"Branded {len(glob.glob(os.path.join(VAULT, '.claude/skills/*/SKILL.md')))} skills and {len(glob.glob(os.path.join(VAULT, '.claude/commands/*.md')))} commands with [{VAULT_NAME}]")
 ```
 
-**Brand commands:** For every `.md` file in `<vault>/.claude/commands/` that was added or updated, prepend `[<vault-name>]` to the first line — but only if not already branded.
-
-```bash
-for cmd in <vault>/.claude/commands/*.md; do
-  if ! head -1 "$cmd" | grep -q "^\[$VAULT_NAME\]"; then
-    sed -i "1s/^/[$VAULT_NAME] /" "$cmd"
-  fi
-done
-```
-
-This keeps all ruyOS commands consistently branded even as new skills are added in updates.
+**Important:** This runs on ALL skills and commands every time, not just new ones. The regex strips any existing prefix before adding the current one, so it's safe to run repeatedly and handles vault renames.
 
 ### Step 8: Update version and manifest
 

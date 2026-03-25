@@ -110,9 +110,9 @@ cp <repo-path>/.ruyos-manifest.json <vault-path>/.ruyos-manifest.json
 
 ### Step 5b: Brand skills and commands with vault name
 
-After copying skills and commands, stamp the vault name as a prefix so the user can identify their commands in autocomplete and skill lists. This is especially important when multiple command sources are present (e.g. ruyOS alongside other plugins).
+**THIS STEP IS MANDATORY.** After copying skills and commands, stamp the vault name as a `[prefix]` so the user can identify their commands in autocomplete and skill lists. Without this, ruyOS commands are indistinguishable from other sources.
 
-**Save the vault name to config:** Create `<vault-path>/.ruyos-config.json` with the vault name:
+**Save the vault name to config:** Create `<vault-path>/.ruyos-config.json`:
 
 ```json
 {
@@ -120,52 +120,58 @@ After copying skills and commands, stamp the vault name as a prefix so the user 
 }
 ```
 
-This file is the single source of truth for the vault name. The update skill reads it too.
+**Then run this Python script** to brand ALL skills and commands. Use Python, not sed — sed behaves differently on macOS vs Linux.
 
-**Brand skill descriptions:** For every `SKILL.md` in `<vault-path>/.claude/skills/*/`, find the `description:` line in the frontmatter and prepend `[<vault-name>]` to the description string. Example:
+```python
+import json, glob, os
 
-```yaml
-# Before
-description: "Morning briefing and daily note creator for a ruyOS vault..."
+VAULT = "<vault-path>"
+VAULT_NAME = "<vault-name>"  # from Step 2
 
-# After (vault named "The Monster")
-description: "[The Monster] Morning briefing and daily note creator for a ruyOS vault..."
+# Save config
+with open(os.path.join(VAULT, ".ruyos-config.json"), "w") as f:
+    json.dump({"vault_name": VAULT_NAME}, f, indent=2)
+
+prefix = f"[{VAULT_NAME}] "
+
+# Brand skill descriptions in YAML frontmatter
+for skill in glob.glob(os.path.join(VAULT, ".claude/skills/*/SKILL.md")):
+    with open(skill, "r") as f:
+        content = f.read()
+    # Remove any existing branding first (handles re-runs and name changes)
+    import re
+    content = re.sub(r'(description:\s*")\[.*?\]\s*', r'\1', content)
+    # Add the prefix
+    content = re.sub(r'(description:\s*")', rf'\1{re.escape(prefix)}', content)
+    with open(skill, "w") as f:
+        f.write(content)
+
+# Brand command descriptions (first line of each .md file)
+for cmd in glob.glob(os.path.join(VAULT, ".claude/commands/*.md")):
+    with open(cmd, "r") as f:
+        lines = f.readlines()
+    if not lines:
+        continue
+    # Remove any existing branding from first line
+    first = re.sub(r'^\[.*?\]\s*', '', lines[0])
+    lines[0] = prefix + first
+    with open(cmd, "w") as f:
+        f.writelines(lines)
+
+print(f"Branded {len(glob.glob(os.path.join(VAULT, '.claude/skills/*/SKILL.md')))} skills and {len(glob.glob(os.path.join(VAULT, '.claude/commands/*.md')))} commands with [{VAULT_NAME}]")
 ```
 
-**Brand command descriptions:** For every `.md` file in `<vault-path>/.claude/commands/`, the first line is the description shown in Claude Code autocomplete. Prepend `[<vault-name>]` to the first line. Example:
+**What this looks like in practice:**
 
-```markdown
-# Before
-Start my day. Run the start-day skill...
+```
+# Skills — visible in Cowork skill list and Claude Code
+description: "[The Monster] Morning briefing and daily note creator..."
 
-# After (vault named "The Monster")
+# Commands — visible in Claude Code autocomplete
 [The Monster] Start my day. Run the start-day skill...
 ```
 
-**Implementation:**
-
-```bash
-VAULT_NAME="<vault-name>"
-
-# Brand skills — update description in YAML frontmatter
-for skill in <vault-path>/.claude/skills/*/SKILL.md; do
-  # Replace description: "..." with description: "[Name] ..."
-  # Only if not already branded
-  if ! grep -q "description: \"\\[$VAULT_NAME\\]" "$skill"; then
-    sed -i "s/description: \"/description: \"[$VAULT_NAME] /" "$skill"
-  fi
-done
-
-# Brand commands — prepend to first line
-for cmd in <vault-path>/.claude/commands/*.md; do
-  # Only if not already branded
-  if ! head -1 "$cmd" | grep -q "^\[$VAULT_NAME\]"; then
-    sed -i "1s/^/[$VAULT_NAME] /" "$cmd"
-  fi
-done
-```
-
-This makes every ruyOS command immediately identifiable in autocomplete — searching for the vault name finds all your commands.
+Searching the vault name in autocomplete finds all your commands instantly.
 
 ### Step 6: Generate starter files
 

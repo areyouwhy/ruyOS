@@ -43,9 +43,11 @@ Compare the local vault against the latest repo. Categorize every difference:
 
 **Updated templates** — Templates that exist locally but differ from repo. Check if the user has modified them (compare against the version they were installed from, if possible).
 
-**Structural changes** — New folders, new system files (like new routing entries in CLAUDE.md).
+**New generated files** — Read `scaffold.json` → `generated_files.files` from the repo. Check each entry's `path` against the local vault. Any file that doesn't exist locally is new and should be created using the frontmatter/heading/body (or raw_content) from the manifest. Respect each file's `merge_strategy` — for `replace` files, also check if existing ones differ and offer to update them.
 
-**Updated system files** — Changes to AI Setup.md, Resources.md, Intelligence.md, or other system-owned files.
+**Structural changes** — New folders from the repo's `scaffold.json` → `folders` array that don't exist locally. Create them.
+
+**Updated system files** — Changes to AI Setup.md, Resources.md, Intelligence.md, or other system-owned files (merge_strategy: `replace`).
 
 **Obsidian config** — Compare `.obsidian/` between repo and local vault. The repo's `.obsidian/` includes app settings and bundled plugins (calendar, dataview, templater, color-folders-files). Strategy: `skip_if_exists` — only copy files that don't exist locally. Never overwrite user's Obsidian customizations (themes, workspace, hotkeys, etc.).
 
@@ -94,6 +96,7 @@ Apply selected changes using these rules:
 | **CLAUDE.md living rules** | Merge | Append new rules, preserve user-added rules |
 | **Templates** (`Settings/Templates/`) | Replace if unmodified, skip if modified | Respect user customizations |
 | **System files** (AI Setup.md, etc.) | Replace | System-owned |
+| **Generated files** (hub pages, etc.) | Per scaffold.json | `replace` = always update, `never_touch` = skip, `skip_if_modified` = check first |
 | **Obsidian config** (`.obsidian/`) | Skip if exists | Respect user customizations; only add missing files/plugins |
 | **Context files** (`Context/`) | Never touch | User-owned content |
 | **Workflow files** (tasks, daily notes, etc.) | Never touch | User-owned content |

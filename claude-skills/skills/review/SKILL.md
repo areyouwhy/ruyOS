@@ -15,8 +15,8 @@ Read ALL of these before starting:
 - Context/Personal/Goals.md
 - Workflow/Tasks/Active.md
 - Workflow/Tasks/Backlog.md
-- Recent daily notes (last 5-7 files in `Workflow/Daily/`, sorted by date)
-- Recent decisions (`Workflow/Intelligence/Decisions/`)
+- Recent daily notes (last 5-7 files in `Workflow/Log/Daily/`, sorted by date)
+- Recent decisions (`Workflow/Knowledge/Decisions/`)
 
 ## What to do
 
@@ -77,7 +77,7 @@ After the user decides:
 1. Update `Context/Personal/Current Focus.md` with agreed changes
 2. Move tasks between `Active.md` and `Backlog.md` as decided
 3. Remove or archive tasks that were killed
-4. Log the review itself as a decision in `Workflow/Intelligence/Decisions/` if significant priority shifts were made
+4. Log the review itself as a decision in `Workflow/Knowledge/Decisions/` if significant priority shifts were made
 
 ### Step 6: Summary
 

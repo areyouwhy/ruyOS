@@ -1,5 +1,5 @@
 {
   "format": "YYYY-MM-DD",
-  "folder": "Workflow/Daily",
+  "folder": "Workflow/Log/Daily",
   "template": "Settings/Templates/Daily Note"
 }

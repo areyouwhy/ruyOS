@@ -11,7 +11,7 @@ Checkpoint after a work block or iteration. Lighter than end-day — this captur
 
 Read these files before executing:
 
-- Workflow/Daily/ (today's daily note, if it exists)
+- Workflow/Log/Daily/ (today's daily note, if it exists)
 - Workflow/Tasks/Active.md
 
 ## What to do
@@ -35,7 +35,7 @@ In `Workflow/Tasks/Active.md`:
 
 ### Step 3: Log decisions
 
-For any decisions made during the session, append to `Workflow/Intelligence/Decisions/Decisions.md` with:
+For any decisions made during the session, append to `Workflow/Knowledge/Decisions/Decisions.md` with:
 
 - Date
 - What was decided
@@ -43,7 +43,7 @@ For any decisions made during the session, append to `Workflow/Intelligence/Deci
 
 ### Step 4: Write session block in daily note
 
-If today's daily note exists (`Workflow/Daily/YYYY-MM-DD.md`), append a session block to the Log section:
+If today's daily note exists (`Workflow/Log/Daily/YYYY-MM-DD.md`), append a session block to the Log section:
 
 ```markdown
 ### Session: [context/project name]

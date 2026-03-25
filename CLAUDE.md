@@ -13,10 +13,11 @@ This file is the navigation layer for any AI agent working with this vault. Read
 | **Context/** | Everything about you — split into Personal and Professional |
 | **Context/Personal/** | Identity, goals, preferences, people, hobbies |
 | **Context/Professional/** | Work, career, strategy, brand, writing style, ICP, tech stack |
-| **Workflow/** | Everything that flows: daily notes, tasks, intelligence, captures |
-| **Workflow/Daily/** | Daily notes in `YYYY-MM-DD.md` format |
+| **Workflow/** | Everything that flows: logs, tasks, knowledge, captures |
+| **Workflow/Log/Daily/** | Daily notes in `YYYY-MM-DD.md` format |
+| **Workflow/Log/Meetings/** | Meeting transcripts and notes |
 | **Workflow/Tasks/** | Task tracking: active, backlog, done |
-| **Workflow/Intelligence/** | Meeting transcripts, decisions, research, insights |
+| **Workflow/Knowledge/** | Decisions, research findings, insights |
 | **Workflow/Capture/** | Quick captures — anything unsorted lands here first |
 | **Projects/** | Personal projects — each has an index note + session notes |
 | **Settings/** | Vault infrastructure |
@@ -49,10 +50,10 @@ When you need context to answer a question or complete a task, use this table:
 | Communication style by channel | `Context/Professional/Communication Style.md` |
 | A specific project | `Projects/<project-name>/<project-name>.md` |
 | What to work on today | `Workflow/Tasks/Active.md` |
-| What happened today/recently | `Workflow/Daily/` |
-| What happened in a meeting | `Workflow/Intelligence/Meetings/` |
-| Past decisions and rationale | `Workflow/Intelligence/Decisions/` |
-| Research & competitive intel | `Workflow/Intelligence/Research/` |
+| What happened today/recently | `Workflow/Log/Daily/` |
+| What happened in a meeting | `Workflow/Log/Meetings/` |
+| Past decisions and rationale | `Workflow/Knowledge/Decisions/` |
+| Research & competitive intel | `Workflow/Knowledge/Research/` |
 | Reusable prompts | `Settings/Resources/Prompts/` |
 | Good output examples | `Settings/Resources/Examples/` |
 | Hardware & software setup | `Settings/System/Computer Overview.md` |
@@ -66,9 +67,9 @@ When you learn something new during a conversation, save it to the right place:
 | If you learn... | Save it to |
 |-----------------|-----------|
 | A writing rule or preference (e.g. "never use em dashes") | `Context/Professional/Writing Preferences.md` → Rules section |
-| A decision with rationale | `Workflow/Intelligence/Decisions/` → new note or append to existing |
-| Meeting notes or transcript | `Workflow/Intelligence/Meetings/` → `YYYY-MM-DD <meeting-name>.md` |
-| A research finding or insight | `Workflow/Intelligence/Research/` or `Workflow/Intelligence/Insights/` |
+| A decision with rationale | `Workflow/Knowledge/Decisions/` → new note or append to existing |
+| Meeting notes or transcript | `Workflow/Log/Meetings/` → `YYYY-MM-DD <meeting-name>.md` |
+| A research finding or insight | `Workflow/Knowledge/Research/` or `Workflow/Knowledge/Insights/` |
 | A new task or to-do | `Workflow/Tasks/Active.md` |
 | A completed task | Move from `Workflow/Tasks/Active.md` to `Workflow/Tasks/Done.md` |
 | A useful prompt | `Settings/Resources/Prompts/` |
@@ -103,9 +104,9 @@ Rules that accumulate over time. AI agents must follow these when producing outp
 
 - **Frontmatter**: YAML with `title`, `tags`, `date`, `last-updated`, `status`
 - **Wikilinks** (`[[Note Name]]`) for internal linking
-- **Daily notes**: `YYYY-MM-DD.md` format in `Workflow/Daily/`
+- **Daily notes**: `YYYY-MM-DD.md` format in `Workflow/Log/Daily/`
 - **Project structure**: Each project is a folder under `Projects/` with an index note
-- **Tags**: `context`, `me`, `project`, `work`, `ai`, `intelligence`, `resource`, `task`, `daily`
+- **Tags**: `context`, `me`, `project`, `work`, `ai`, `knowledge`, `log`, `resource`, `task`, `daily`
 - **Callouts**: Obsidian-flavored (`> [!info]`, `> [!warning]`, `> [!tip]`)
 
 ## Skill Integration

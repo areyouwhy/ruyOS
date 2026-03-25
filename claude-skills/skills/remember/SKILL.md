@@ -14,9 +14,9 @@ Use this table to decide where to save:
 | If you learn... | Save it to |
 |-----------------|-----------|
 | A writing rule or preference | `Context/Professional/Writing Preferences.md` → Living Rules section |
-| A decision with rationale | `Workflow/Intelligence/Decisions/` → new note or append to Decisions.md |
-| Meeting notes or transcript | `Workflow/Intelligence/Meetings/` → `YYYY-MM-DD <meeting-name>.md` |
-| A research finding or insight | `Workflow/Intelligence/Research/` or `Workflow/Intelligence/Insights/` |
+| A decision with rationale | `Workflow/Knowledge/Decisions/` → new note or append to Decisions.md |
+| Meeting notes or transcript | `Workflow/Log/Meetings/` → `YYYY-MM-DD <meeting-name>.md` |
+| A research finding or insight | `Workflow/Knowledge/Research/` or `Workflow/Knowledge/Insights/` |
 | A new task or to-do | `Workflow/Tasks/Active.md` |
 | A completed task | Move from `Workflow/Tasks/Active.md` to `Workflow/Tasks/Done.md` |
 | A useful prompt | `Settings/Resources/Prompts/` |
@@ -41,5 +41,5 @@ Use this table to decide where to save:
 - Use wikilinks (`[[Note Name]]`) for internal references
 - Always preserve existing frontmatter when editing notes
 - When unsure where something goes, put it in `Workflow/Capture/`
-- Use the vault's tag conventions: `context`, `me`, `project`, `work`, `ai`, `intelligence`, `resource`, `task`, `daily`
+- Use the vault's tag conventions: `context`, `me`, `project`, `work`, `ai`, `knowledge`, `log`, `resource`, `task`, `daily`
 - Keep saves clean and structured — don't dump raw text, format it to match the target file's style

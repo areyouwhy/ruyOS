@@ -59,11 +59,11 @@ Create the full folder structure at the vault path. Read the `folders` array fro
 <vault-path>/Context/Personal/
 <vault-path>/Context/Professional/
 <vault-path>/Workflow/Capture/
-<vault-path>/Workflow/Daily/
-<vault-path>/Workflow/Intelligence/Decisions/
-<vault-path>/Workflow/Intelligence/Insights/
-<vault-path>/Workflow/Intelligence/Meetings/
-<vault-path>/Workflow/Intelligence/Research/
+<vault-path>/Workflow/Log/Daily/
+<vault-path>/Workflow/Log/Meetings/
+<vault-path>/Workflow/Knowledge/Decisions/
+<vault-path>/Workflow/Knowledge/Insights/
+<vault-path>/Workflow/Knowledge/Research/
 <vault-path>/Workflow/Tasks/
 <vault-path>/Projects/
 <vault-path>/Settings/System/

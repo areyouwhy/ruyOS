@@ -30,9 +30,9 @@ For each capture, determine its type using the save routing table from CLAUDE.md
 | Type | Destination |
 |------|------------|
 | Task or to-do | `Workflow/Tasks/Active.md` |
-| Decision with rationale | `Workflow/Intelligence/Decisions/` |
-| Meeting notes | `Workflow/Intelligence/Meetings/` |
-| Research finding or insight | `Workflow/Intelligence/Insights/` or `Research/` |
+| Decision with rationale | `Workflow/Knowledge/Decisions/` |
+| Meeting notes | `Workflow/Log/Meetings/` |
+| Research finding or insight | `Workflow/Knowledge/Insights/` or `Research/` |
 | Writing rule or preference | `Context/Professional/Writing Preferences.md` |
 | Person info | `Context/Personal/People.md` |
 | Project update | `Projects/<project>/` index note |

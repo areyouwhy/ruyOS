@@ -11,16 +11,16 @@ Daily wrap-up for the vault. Review what happened, log decisions, archive tasks,
 
 Read these files from the vault before executing:
 
-- Workflow/Daily/ (today's daily note)
+- Workflow/Log/Daily/ (today's daily note)
 - Workflow/Tasks/Active.md
-- Workflow/Intelligence/Decisions/Decisions.md
+- Workflow/Knowledge/Decisions/Decisions.md
 - Context/Professional/Writing Preferences.md (for any new rules learned)
 
 ## What to do
 
 ### Step 1: Gather context
 
-1. **Today's daily note** — Read `Workflow/Daily/YYYY-MM-DD.md` (today's date).
+1. **Today's daily note** — Read `Workflow/Log/Daily/YYYY-MM-DD.md` (today's date).
 2. **Active tasks** — Read `Workflow/Tasks/Active.md` to see what was on the list.
 3. **Conversation review** — Review this conversation for any decisions, insights, or rules learned during the session.
 
@@ -36,7 +36,7 @@ If the daily note doesn't exist yet, create it using the template from `Settings
 
 ### Step 3: Log decisions
 
-For any significant decisions made today, add them to `Workflow/Intelligence/Decisions/Decisions.md` with:
+For any significant decisions made today, add them to `Workflow/Knowledge/Decisions/Decisions.md` with:
 
 - Date
 - What was decided
@@ -51,7 +51,7 @@ For any significant decisions made today, add them to `Workflow/Intelligence/Dec
 ### Step 5: Capture learnings
 
 - **Writing rules or preferences** learned today → append to `Context/Professional/Writing Preferences.md` in the Living Rules section.
-- **Insights** → save to `Workflow/Intelligence/Insights/` if significant.
+- **Insights** → save to `Workflow/Knowledge/Insights/` if significant.
 
 ### Step 6: Day summary
 

@@ -7,11 +7,11 @@
     "Context/Personal",
     "Context/Professional",
     "Workflow/Capture",
-    "Workflow/Daily",
-    "Workflow/Intelligence/Decisions",
-    "Workflow/Intelligence/Insights",
-    "Workflow/Intelligence/Meetings",
-    "Workflow/Intelligence/Research",
+    "Workflow/Log/Daily",
+    "Workflow/Log/Meetings",
+    "Workflow/Knowledge/Decisions",
+    "Workflow/Knowledge/Insights",
+    "Workflow/Knowledge/Research",
     "Workflow/Tasks",
     "Projects",
     "Settings/System",
@@ -69,7 +69,7 @@
         "merge_strategy": "replace",
         "frontmatter": { "title": "AI Setup", "tags": ["ai", "system"] },
         "heading": "AI setup",
-        "body": "How ruyOS works as an AI-powered second brain.\n\n## Philosophy\n\nThe vault is the single source of truth. AI agents (Claude via Cowork, Claude Code, or any other provider) read and write to this vault. The CLAUDE.md file at the root is the navigation layer that tells any AI agent how to find and store information.\n\n## Key components\n\n- **CLAUDE.md** — Brain file with knowledge routing and save routing tables\n- **Context/Personal/** — Identity, goals, preferences, people\n- **Context/Professional/** — Work, strategy, brand, writing style, ICP, tech stack\n- **Workflow/Intelligence/** — Accumulated knowledge from meetings, decisions, research\n- **Settings/Resources/** — Reusable prompts, frameworks, examples\n- **Workflow/Tasks/** — AI-readable task tracking\n\n## Skills\n\nruyOS ships with workflow skills in `.claude/skills/`:\n\n| Skill | What it does |\n|-------|-------------|\n| **start-day** | Morning briefing and daily note creation |\n| **end-day** | Daily wrap-up, archive, and reflection |\n| **end-session** | Checkpoint after a work block or iteration |\n| **remember** | Save information to the right vault location |\n| **inbox** | Triage items in Workflow/Capture/ to permanent homes |\n| **review** | Realign priorities against goals and focus |\n| **setup-ruyos** | Bootstrap a fresh vault |\n| **update-ruyos** | Pull latest updates from the ruyOS repo |\n\nSkills reference vault context instead of embedding copies. One update to a context file benefits every skill.\n\n## Tips\n\n- Every new Cowork/Claude Code session should point to this vault folder\n- When the AI learns a rule or preference, tell it to save it to the right place\n- If navigation breaks, update CLAUDE.md — it's the bridge\n- Put unsorted captures in Workflow/Capture/ and process later"
+        "body": "How ruyOS works as an AI-powered second brain.\n\n## Philosophy\n\nThe vault is the single source of truth. AI agents (Claude via Cowork, Claude Code, or any other provider) read and write to this vault. The CLAUDE.md file at the root is the navigation layer that tells any AI agent how to find and store information.\n\n## Key components\n\n- **CLAUDE.md** — Brain file with knowledge routing and save routing tables\n- **Context/Personal/** — Identity, goals, preferences, people\n- **Context/Professional/** — Work, strategy, brand, writing style, ICP, tech stack\n- **Workflow/Knowledge/** — Decisions, research, and insights\n- **Workflow/Log/** — Daily notes and meeting records\n- **Settings/Resources/** — Reusable prompts, frameworks, examples\n- **Workflow/Tasks/** — AI-readable task tracking\n\n## Skills\n\nruyOS ships with workflow skills in `.claude/skills/`:\n\n| Skill | What it does |\n|-------|-------------|\n| **start-day** | Morning briefing and daily note creation |\n| **end-day** | Daily wrap-up, archive, and reflection |\n| **end-session** | Checkpoint after a work block or iteration |\n| **remember** | Save information to the right vault location |\n| **inbox** | Triage items in Workflow/Capture/ to permanent homes |\n| **review** | Realign priorities against goals and focus |\n| **setup-ruyos** | Bootstrap a fresh vault |\n| **update-ruyos** | Pull latest updates from the ruyOS repo |\n\nSkills reference vault context instead of embedding copies. One update to a context file benefits every skill.\n\n## Tips\n\n- Every new Cowork/Claude Code session should point to this vault folder\n- When the AI learns a rule or preference, tell it to save it to the right place\n- If navigation breaks, update CLAUDE.md — it's the bridge\n- Put unsorted captures in Workflow/Capture/ and process later"
       },
       {
         "path": "Settings/Resources/Resources.md",
@@ -88,7 +88,7 @@
       {
         "path": "Settings/Templates/Daily Note.md",
         "merge_strategy": "skip_if_modified",
-        "raw_content": "---\ntitle: \"{{ date }}\"\ntags:\n  - daily\ndate: \"{{ date }}\"\n---\n\n# {{ date }}\n\n## Focus\n\nWhat I'm working on today. Pull from [[Active]] tasks.\n\n-\n\n## Log\n\nWhat happened, what I worked on, key events.\n\n-\n\n## Decisions\n\nAny decisions made today. Copy significant ones to [[Intelligence/Decisions/Decisions|Decision Log]].\n\n-\n\n## Learned\n\nThings I learned or insights from today.\n\n-\n\n## Tomorrow\n\nWhat to carry forward.\n\n-"
+        "raw_content": "---\ntitle: \"{{ date }}\"\ntags:\n  - daily\ndate: \"{{ date }}\"\n---\n\n# {{ date }}\n\n## Focus\n\nWhat I'm working on today. Pull from [[Active]] tasks.\n\n-\n\n## Log\n\nWhat happened, what I worked on, key events.\n\n-\n\n## Decisions\n\nAny decisions made today. Copy significant ones to [[Knowledge/Decisions/Decisions|Decision Log]].\n\n-\n\n## Learned\n\nThings I learned or insights from today.\n\n-\n\n## Tomorrow\n\nWhat to carry forward.\n\n-"
       },
       {
         "path": "Settings/Templates/Meeting Note.md",
@@ -122,7 +122,7 @@
         "merge_strategy": "replace",
         "frontmatter": { "title": "Workflow", "tags": ["workflow", "hub"] },
         "heading": "Workflow",
-        "body": "The engine room — where daily work, tasks, and knowledge accumulate.\n\n## Areas\n\n- [[Active]] — Current to-do list\n- [[Backlog]] — Things to do eventually\n- [[Done]] — Completed tasks archive\n- [[Intelligence]] — Accumulated knowledge from meetings, decisions, research\n\n## Folders\n\n- **Capture/** — Inbox for unsorted items. Process with `/inbox`\n- **Daily/** — Daily notes created by `/start-day`\n- **Tasks/** — Task tracking files\n- **Intelligence/** — Meetings, decisions, research, insights"
+        "body": "The engine room — where daily work, tasks, and knowledge accumulate.\n\n## Areas\n\n- [[Active]] — Current to-do list\n- [[Backlog]] — Things to do eventually\n- [[Done]] — Completed tasks archive\n- [[Log]] — What happened: daily notes and meetings\n- [[Knowledge]] — What we know: decisions, insights, research\n\n## Folders\n\n- **Capture/** — Inbox for unsorted items. Process with `/inbox`\n- **Log/** — Daily notes and meeting records\n- **Tasks/** — Task tracking files\n- **Knowledge/** — Decisions, insights, and research"
       },
       {
         "path": "Projects/Projects.md",
@@ -153,14 +153,21 @@
         "body": "Welcome to the vault. This is the operating system for your life, work, and projects — powered by Obsidian and AI.\n\nRun `/start-day` to begin, or explore the folders to set up your context."
       },
       {
-        "path": "Workflow/Intelligence/Intelligence.md",
+        "path": "Workflow/Log/Log.md",
         "merge_strategy": "replace",
-        "frontmatter": { "title": "Intelligence", "tags": ["intelligence"] },
-        "heading": "Intelligence",
-        "body": "Accumulated knowledge — meetings, decisions, research, and insights. This is the vault's long-term memory.\n\n## Subfolders\n\n- **Meetings/** — Meeting transcripts and notes. Format: `YYYY-MM-DD <meeting-name>.md`\n- **Decisions/** — Significant decisions with rationale, context, and date\n- **Research/** — Market research, competitor analysis, technology evaluations\n- **Insights/** — Observations, patterns, things learned over time"
+        "frontmatter": { "title": "Log", "tags": ["log", "hub"] },
+        "heading": "Log",
+        "body": "What happened — time-stamped records of activities and events.\n\n## Areas\n\n- **Daily/** — Daily notes created by `/start-day`. Format: `YYYY-MM-DD.md`\n- **Meetings/** — Meeting transcripts and notes. Format: `YYYY-MM-DD <meeting-name>.md`\n\nLog entries are chronological and append-only. Distilled takeaways belong in [[Knowledge]]."
       },
       {
-        "path": "Workflow/Intelligence/Decisions/Decisions.md",
+        "path": "Workflow/Knowledge/Knowledge.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Knowledge", "tags": ["knowledge", "hub"] },
+        "heading": "Knowledge",
+        "body": "What we know — accumulated wisdom that persists beyond any single event.\n\n## Areas\n\n- [[Decisions]] — Significant decisions with rationale, context, and date\n- **Insights/** — Observations, patterns, things learned over time\n- **Research/** — Market research, competitor analysis, technology evaluations\n\nKnowledge is refined over time. Raw activity records belong in [[Log]]."
+      },
+      {
+        "path": "Workflow/Knowledge/Decisions/Decisions.md",
         "merge_strategy": "skip_if_modified",
         "frontmatter": { "title": "Decision Log", "tags": ["intelligence", "decisions"] },
         "heading": "Decision log",

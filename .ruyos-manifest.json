@@ -2,7 +2,7 @@
   "version": "1988.02.24",
   "files": {
     "CLAUDE.md": {
-      "hash": "28bb07467cb8",
+      "hash": "677b12793c6f",
       "merge_strategy": "merge",
       "source": "content_file"
     },
@@ -12,42 +12,42 @@
       "source": "content_file"
     },
     ".ruyos-manifest.json": {
-      "hash": "73ac52611d10",
+      "hash": "0187a489c33a",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/start-day/SKILL.md": {
-      "hash": "3ef981900d5d",
+      "hash": "8959d8864ff4",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/end-day/SKILL.md": {
-      "hash": "4ba8f4767d29",
+      "hash": "dddb0ac7e082",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/end-session/SKILL.md": {
-      "hash": "6057a5c629be",
+      "hash": "4758bd958f44",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/remember/SKILL.md": {
-      "hash": "b8fc8cfa3562",
+      "hash": "d8c6a26ca74c",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/inbox/SKILL.md": {
-      "hash": "6461ed2a2dff",
+      "hash": "f27d1e9c697a",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/review/SKILL.md": {
-      "hash": "1bc63c65211a",
+      "hash": "2aca77dd8d50",
       "merge_strategy": "replace",
       "source": "content_file"
     },
     ".claude/skills/setup-ruyos/SKILL.md": {
-      "hash": "e1edb5f1d205",
+      "hash": "157bcca4d96d",
       "merge_strategy": "replace",
       "source": "content_file"
     },
@@ -117,7 +117,7 @@
       "source": "obsidian"
     },
     ".obsidian/daily-notes.json": {
-      "hash": "69bb6a4dab9b",
+      "hash": "0081301c6835",
       "merge_strategy": "skip_if_exists",
       "source": "obsidian"
     },
@@ -197,7 +197,7 @@
       "source": "obsidian"
     },
     "Settings/System/AI Setup.md": {
-      "hash": "77527367f1a5",
+      "hash": "15535f82559f",
       "merge_strategy": "replace",
       "source": "generated_file"
     },
@@ -212,7 +212,7 @@
       "source": "generated_file"
     },
     "Settings/Templates/Daily Note.md": {
-      "hash": "1666b69d8c58",
+      "hash": "48c4c825f300",
       "merge_strategy": "skip_if_modified",
       "source": "generated_file"
     },
@@ -242,7 +242,7 @@
       "source": "generated_file"
     },
     "Workflow/Workflow.md": {
-      "hash": "03ba201e5c96",
+      "hash": "4100bac76113",
       "merge_strategy": "replace",
       "source": "generated_file"
     },
@@ -266,12 +266,17 @@
       "merge_strategy": "replace",
       "source": "generated_file"
     },
-    "Workflow/Intelligence/Intelligence.md": {
-      "hash": "223cadd03fcb",
+    "Workflow/Log/Log.md": {
+      "hash": "6211ce0a2eba",
       "merge_strategy": "replace",
       "source": "generated_file"
     },
-    "Workflow/Intelligence/Decisions/Decisions.md": {
+    "Workflow/Knowledge/Knowledge.md": {
+      "hash": "dbe41ec6a427",
+      "merge_strategy": "replace",
+      "source": "generated_file"
+    },
+    "Workflow/Knowledge/Decisions/Decisions.md": {
       "hash": "2d0dec3646db",
       "merge_strategy": "skip_if_modified",
       "source": "generated_file"

@@ -23,10 +23,10 @@ Follow these steps in order. Read everything before writing anything.
 
 1. **Current Focus** — Read `Context/Personal/Current Focus.md`. This is the living priority list.
 2. **Active tasks** — Read `Workflow/Tasks/Active.md`. What's on the to-do list?
-3. **Yesterday's daily note** — Find the most recent file in `Workflow/Daily/` by date in filename (`YYYY-MM-DD.md`). Pay attention to:
+3. **Yesterday's daily note** — Find the most recent file in `Workflow/Log/Daily/` by date in filename (`YYYY-MM-DD.md`). Pay attention to:
    - The Tomorrow section — carry-forward items
    - The Log section — what actually happened
-4. **Recent decisions** — Check `Workflow/Intelligence/Decisions/` for anything from the last few days.
+4. **Recent decisions** — Check `Workflow/Knowledge/Decisions/` for anything from the last few days.
 5. **Recent session notes** — Scan `Projects/` subfolders for session notes dated yesterday or today. Note which projects had activity and any blockers or next steps.
 
 ### Step 2: Build the briefing
@@ -43,7 +43,7 @@ Present a concise morning briefing. Keep it scannable — orientation, not a rep
 
 ### Step 3: Create today's daily note
 
-Check if today's note exists in `Workflow/Daily/` (format: `YYYY-MM-DD.md`).
+Check if today's note exists in `Workflow/Log/Daily/` (format: `YYYY-MM-DD.md`).
 
 **If it doesn't exist**, create it using the template from `Settings/Templates/Daily Note.md`. Populate the Focus section by carrying forward unresolved items from yesterday.
 

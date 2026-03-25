@@ -1,0 +1,34 @@
+{
+  "styles": {
+    "Context": {
+      "backgroundColor": "#e06c75",
+      "textColor": "#ffffff",
+      "isBold": true,
+      "applyToSubfolders": true,
+      "applyToFiles": true
+    },
+    "Workflow": {
+      "backgroundColor": "#d19a66",
+      "textColor": "#ffffff",
+      "isBold": true,
+      "applyToSubfolders": true,
+      "applyToFiles": true
+    },
+    "Projects": {
+      "backgroundColor": "#56b6c2",
+      "textColor": "#000000",
+      "isBold": true,
+      "applyToSubfolders": true,
+      "applyToFiles": true
+    },
+    "Settings": {
+      "backgroundColor": "#94a3b8",
+      "textColor": "#000000",
+      "isBold": true,
+      "applyToSubfolders": true,
+      "applyToFiles": true
+    }
+  },
+  "presets": {},
+  "presetOrder": []
+}

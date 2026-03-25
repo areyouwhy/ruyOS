@@ -47,6 +47,8 @@ Compare the local vault against the latest repo. Categorize every difference:
 
 **Updated system files** — Changes to AI Setup.md, Resources.md, Intelligence.md, or other system-owned files.
 
+**Obsidian config** — Compare `.obsidian/` between repo and local vault. The repo's `.obsidian/` includes app settings and bundled plugins (calendar, dataview, templater, color-folders-files). Strategy: `skip_if_exists` — only copy files that don't exist locally. Never overwrite user's Obsidian customizations (themes, workspace, hotkeys, etc.).
+
 **Deprecations** — Skills or files in the local vault that no longer exist in the repo.
 
 ### Step 4: Present the update plan
@@ -92,6 +94,7 @@ Apply selected changes using these rules:
 | **CLAUDE.md living rules** | Merge | Append new rules, preserve user-added rules |
 | **Templates** (`Settings/Templates/`) | Replace if unmodified, skip if modified | Respect user customizations |
 | **System files** (AI Setup.md, etc.) | Replace | System-owned |
+| **Obsidian config** (`.obsidian/`) | Skip if exists | Respect user customizations; only add missing files/plugins |
 | **Context files** (`Context/`) | Never touch | User-owned content |
 | **Workflow files** (tasks, daily notes, etc.) | Never touch | User-owned content |
 | **Project files** | Never touch | User-owned content |

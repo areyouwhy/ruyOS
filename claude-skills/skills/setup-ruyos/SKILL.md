@@ -94,6 +94,14 @@ cp -r <repo-path>/claude-skills/skills/* <vault-path>/.claude/skills/
 cp -r <repo-path>/claude-skills/commands/* <vault-path>/.claude/commands/
 ```
 
+**Obsidian config and plugins:** Copy the `.obsidian/` directory from the repo to the vault. This includes app settings, core/community plugin lists, and bundled plugins (calendar, dataview, templater, color-folders-files):
+
+```bash
+cp -r <repo-path>/.obsidian <vault-path>/.obsidian
+```
+
+This gives users a working Obsidian setup out of the box — daily notes configured, templates pointed at the right folder, and community plugins ready to enable.
+
 ### Step 6: Generate starter files
 
 Read `scaffold.json` → `generated_files.files` array. For each entry, create the file at `<vault-path>/<path>` using the frontmatter, heading, and body defined in the manifest. Skip any file that already exists.

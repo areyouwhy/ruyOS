@@ -35,7 +35,7 @@
       "install_path": ".obsidian",
       "merge_strategy": "skip_if_exists",
       "plugins": ["calendar", "dataview", "templater-obsidian", "color-folders-files"],
-      "config_files": ["app.json", "community-plugins.json", "core-plugins.json", "daily-notes.json"]
+      "config_files": ["app.json", "community-plugins.json", "core-plugins.json", "daily-notes.json", "graph.json"]
     },
     "skills": [
       { "repo_path": "claude-skills/skills/start-day/SKILL.md", "install_path": ".claude/skills/start-day/SKILL.md", "merge_strategy": "replace" },
@@ -107,6 +107,34 @@
         "path": "Settings/Templates/Weekly Review.md",
         "merge_strategy": "skip_if_modified",
         "raw_content": "---\ntitle: \"Week of {{ date }}\"\ntags:\n  - review\n  - weekly\ndate: \"{{ date }}\"\n---\n\n# Week of {{ date }}\n\n## What I accomplished\n\n-\n\n## What didn't get done\n\n-\n\n## Key decisions this week\n\n-\n\n## Priorities for next week\n\n-\n\n## Reflections\n\n-"
+      },
+      {
+        "path": "Context/Context.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Context", "tags": ["context", "hub"] },
+        "heading": "Context",
+        "body": "Who you are, what you do, and how you work. This is the identity layer that every skill draws from.\n\n## Personal\n\n- [[About Me]] — The basics: name, location, values\n- [[Current Focus]] — What you're actively working on\n- [[Goals]] — Short and long-term objectives\n- [[Interests & Hobbies]] — Life outside work\n- [[People]] — Key people in your life and work\n- [[Preferences]] — How you like things done\n\n## Professional\n\n- [[Work]] — Current employer, role, team\n- [[Work & Career]] — Career history and skills\n- [[Strategy]] — Where you're headed and why\n- [[Writing Preferences]] — Voice, tone, and style rules\n- [[Communication Style]] — How you communicate across channels\n- [[Brand]] — Personal and professional brand identity\n- [[ICP]] — Who you're writing for\n- [[Pain Points]] — What your audience struggles with\n- [[Tech Stack]] — Languages, tools, and platforms"
+      },
+      {
+        "path": "Workflow/Workflow.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Workflow", "tags": ["workflow", "hub"] },
+        "heading": "Workflow",
+        "body": "The engine room — where daily work, tasks, and knowledge accumulate.\n\n## Areas\n\n- [[Active]] — Current to-do list\n- [[Backlog]] — Things to do eventually\n- [[Done]] — Completed tasks archive\n- [[Intelligence]] — Accumulated knowledge from meetings, decisions, research\n\n## Folders\n\n- **Capture/** — Inbox for unsorted items. Process with `/inbox`\n- **Daily/** — Daily notes created by `/start-day`\n- **Tasks/** — Task tracking files\n- **Intelligence/** — Meetings, decisions, research, insights"
+      },
+      {
+        "path": "Projects/Projects.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Projects", "tags": ["project", "hub"] },
+        "heading": "Projects",
+        "body": "Active and past projects. Each project gets its own subfolder with a project file and session notes.\n\n## How projects work\n\nCreate a new project with the **New Project** template. Each project folder contains a project file (goals, status, log) and session notes from individual work blocks.\n\n```dataview\nTABLE status AS \"Status\", last-updated AS \"Updated\"\nFROM \"Projects\"\nWHERE contains(tags, \"project\")\nSORT last-updated DESC\n```"
+      },
+      {
+        "path": "Settings/Settings.md",
+        "merge_strategy": "replace",
+        "frontmatter": { "title": "Settings", "tags": ["settings", "hub"] },
+        "heading": "Settings",
+        "body": "System configuration, templates, and reusable resources. The infrastructure layer.\n\n## Areas\n\n- [[AI Setup]] — How ruyOS works as an AI-powered second brain\n- [[Computer Overview]] — Hardware, software, and dev environment\n- [[Resources]] — Reusable prompts, frameworks, examples, snippets\n\n## Templates\n\nStarter templates used by skills and Templater:\n\n- **Daily Note** — Created by `/start-day`\n- **Meeting Note** — For meeting capture\n- **New Project** — Project scaffolding\n- **Session Note** — Work block documentation\n- **Weekly Review** — Weekly reflection"
       },
       {
         "path": "Workflow/Home.md",

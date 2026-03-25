@@ -127,9 +127,46 @@ date: <today's date>
 <body>
 ```
 
-### Step 7: Install dependencies
+### Step 7: Install Obsidian and dependencies
 
-Check for and install required packages:
+#### Obsidian
+
+Check if Obsidian is installed. If not, install it automatically (ask permission first).
+
+**macOS:**
+```bash
+# Check if installed
+if [ ! -d "/Applications/Obsidian.app" ]; then
+    echo "Obsidian not found. Installing..."
+    # Download latest universal DMG
+    curl -L -o /tmp/Obsidian.dmg "https://github.com/obsidianmd/obsidian-releases/releases/latest/download/Obsidian-universal.dmg"
+    hdiutil attach /tmp/Obsidian.dmg -quiet
+    cp -r "/Volumes/Obsidian/Obsidian.app" /Applications/
+    hdiutil detach "/Volumes/Obsidian" -quiet
+    rm /tmp/Obsidian.dmg
+    echo "Obsidian installed to /Applications"
+fi
+```
+
+**Linux:**
+```bash
+# Check if installed
+if ! command -v obsidian &>/dev/null; then
+    echo "Obsidian not found. Installing via snap..."
+    sudo snap install obsidian --classic
+fi
+```
+
+**Windows (WSL/PowerShell):**
+```powershell
+# Download installer
+Invoke-WebRequest -Uri "https://github.com/obsidianmd/obsidian-releases/releases/latest/download/Obsidian.exe" -OutFile "$env:TEMP\Obsidian.exe"
+Start-Process "$env:TEMP\Obsidian.exe" -Wait
+```
+
+If auto-install fails or the user declines, provide the download link: https://obsidian.md/download and continue with the rest of setup. Obsidian is not required to complete setup — the vault works without it, the user can install it later.
+
+#### Other dependencies
 
 ```bash
 # Python packages (for document skills)
@@ -181,7 +218,19 @@ Verify the vault is functional:
 
 Report results and the vault path.
 
-If everything passes, suggest: "Your vault is ready at `<vault-path>`. Open it in Obsidian or point Claude Code at it. Try 'start my day' to test the loop."
+If everything passes:
+
+1. **Open the vault in Obsidian automatically** (if Obsidian is installed):
+   ```bash
+   # macOS
+   open "obsidian://open?path=<vault-path>"
+   # Linux
+   xdg-open "obsidian://open?path=<vault-path>"
+   ```
+
+2. If Obsidian prompts about "Trust author and enable plugins", tell the user to click **Trust** — the bundled plugins (calendar, dataview, templater, color-folders-files) are safe and needed for the full experience.
+
+3. Tell the user: "Your vault is ready at `<vault-path>`. I've opened it in Obsidian. Try 'start my day' to test the loop."
 
 ## Rules
 

@@ -1,0 +1,1 @@
+Review my priorities. Run the review skill: read my current focus, goals, active tasks, and recent daily notes, then analyze alignment and surface observations about drift, stale items, and opportunities.

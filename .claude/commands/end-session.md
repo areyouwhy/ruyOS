@@ -1,0 +1,1 @@
+End this session. Run the end-session skill: capture what was accomplished in this work block, update task statuses, log decisions, and write a session block to today's daily note. This is a checkpoint, not a full day wrap-up.

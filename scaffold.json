@@ -40,14 +40,14 @@
       { "repo_path": "claude-skills/skills/update-ruyos/SKILL.md", "install_path": ".claude/skills/update-ruyos/SKILL.md", "merge_strategy": "replace" }
     ],
     "commands": [
-      { "repo_path": "claude-skills/commands/start-day.md", "install_path": ".claude/commands/start-day.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/end-day.md", "install_path": ".claude/commands/end-day.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/end-session.md", "install_path": ".claude/commands/end-session.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/remember.md", "install_path": ".claude/commands/remember.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/inbox.md", "install_path": ".claude/commands/inbox.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/review.md", "install_path": ".claude/commands/review.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/setup-ruyos.md", "install_path": ".claude/commands/setup-ruyos.md", "merge_strategy": "replace" },
-      { "repo_path": "claude-skills/commands/update-ruyos.md", "install_path": ".claude/commands/update-ruyos.md", "merge_strategy": "replace" }
+      { "repo_path": ".claude/commands/start-day.md", "install_path": ".claude/commands/start-day.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/end-day.md", "install_path": ".claude/commands/end-day.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/end-session.md", "install_path": ".claude/commands/end-session.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/remember.md", "install_path": ".claude/commands/remember.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/inbox.md", "install_path": ".claude/commands/inbox.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/review.md", "install_path": ".claude/commands/review.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/setup-ruyos.md", "install_path": ".claude/commands/setup-ruyos.md", "merge_strategy": "replace" },
+      { "repo_path": ".claude/commands/update-ruyos.md", "install_path": ".claude/commands/update-ruyos.md", "merge_strategy": "replace" }
     ]
   },
 

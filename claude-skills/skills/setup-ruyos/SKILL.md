@@ -108,6 +108,65 @@ This gives users a working Obsidian setup out of the box — daily notes configu
 cp <repo-path>/.ruyos-manifest.json <vault-path>/.ruyos-manifest.json
 ```
 
+### Step 5b: Brand skills and commands with vault name
+
+After copying skills and commands, stamp the vault name as a prefix so the user can identify their commands in autocomplete and skill lists. This is especially important when multiple command sources are present (e.g. ruyOS alongside other plugins).
+
+**Save the vault name to config:** Create `<vault-path>/.ruyos-config.json` with the vault name:
+
+```json
+{
+  "vault_name": "<vault-name>"
+}
+```
+
+This file is the single source of truth for the vault name. The update skill reads it too.
+
+**Brand skill descriptions:** For every `SKILL.md` in `<vault-path>/.claude/skills/*/`, find the `description:` line in the frontmatter and prepend `[<vault-name>]` to the description string. Example:
+
+```yaml
+# Before
+description: "Morning briefing and daily note creator for a ruyOS vault..."
+
+# After (vault named "The Monster")
+description: "[The Monster] Morning briefing and daily note creator for a ruyOS vault..."
+```
+
+**Brand command descriptions:** For every `.md` file in `<vault-path>/.claude/commands/`, the first line is the description shown in Claude Code autocomplete. Prepend `[<vault-name>]` to the first line. Example:
+
+```markdown
+# Before
+Start my day. Run the start-day skill...
+
+# After (vault named "The Monster")
+[The Monster] Start my day. Run the start-day skill...
+```
+
+**Implementation:**
+
+```bash
+VAULT_NAME="<vault-name>"
+
+# Brand skills — update description in YAML frontmatter
+for skill in <vault-path>/.claude/skills/*/SKILL.md; do
+  # Replace description: "..." with description: "[Name] ..."
+  # Only if not already branded
+  if ! grep -q "description: \"\\[$VAULT_NAME\\]" "$skill"; then
+    sed -i "s/description: \"/description: \"[$VAULT_NAME] /" "$skill"
+  fi
+done
+
+# Brand commands — prepend to first line
+for cmd in <vault-path>/.claude/commands/*.md; do
+  # Only if not already branded
+  if ! head -1 "$cmd" | grep -q "^\[$VAULT_NAME\]"; then
+    sed -i "1s/^/[$VAULT_NAME] /" "$cmd"
+  fi
+done
+```
+
+This makes every ruyOS command immediately identifiable in autocomplete — searching for the vault name finds all your commands.
+
 ### Step 6: Generate starter files
 
 Read `scaffold.json` → `generated_files.files` array. For each entry, create the file at `<vault-path>/<path>` using the frontmatter, heading, and body defined in the manifest. Skip any file that already exists.

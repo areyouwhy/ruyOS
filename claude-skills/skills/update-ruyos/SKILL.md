@@ -111,11 +111,41 @@ When merging CLAUDE.md:
 4. Append new entries to the appropriate tables
 5. Preserve all existing content, including user-added living rules
 
-### Step 7: Update version and manifest
+### Step 7: Re-brand updated skills and commands
+
+After applying changes, re-stamp the vault name prefix on any new or updated skills and commands. This ensures new skills added by the update are immediately identifiable in autocomplete.
+
+**Read the vault name** from `<vault>/.ruyos-config.json` → `vault_name` field. If the config file doesn't exist (pre-branding install), ask the user what their vault is called, then create the config file.
+
+**Brand skills:** For every `SKILL.md` in `<vault>/.claude/skills/*/` that was added or updated in this run, find the `description:` line in the frontmatter and prepend `[<vault-name>]` to the description string — but only if it's not already branded.
+
+```bash
+VAULT_NAME=$(python3 -c "import json; print(json.load(open('<vault>/.ruyos-config.json'))['vault_name'])")
+
+for skill in <vault>/.claude/skills/*/SKILL.md; do
+  if ! grep -q "description: \"\\[$VAULT_NAME\\]" "$skill"; then
+    sed -i "s/description: \"/description: \"[$VAULT_NAME] /" "$skill"
+  fi
+done
+```
+
+**Brand commands:** For every `.md` file in `<vault>/.claude/commands/` that was added or updated, prepend `[<vault-name>]` to the first line — but only if not already branded.
+
+```bash
+for cmd in <vault>/.claude/commands/*.md; do
+  if ! head -1 "$cmd" | grep -q "^\[$VAULT_NAME\]"; then
+    sed -i "1s/^/[$VAULT_NAME] /" "$cmd"
+  fi
+done
+```
+
+This keeps all ruyOS commands consistently branded even as new skills are added in updates.
+
+### Step 8: Update version and manifest
 
 Write the new version to `.ruyos-version` and copy the repo's `.ruyos-manifest.json` to the vault, replacing the old one. This ensures the next update can diff efficiently against what was just installed.
 
-### Step 8: CLAUDE.md health check
+### Step 9: CLAUDE.md health check
 
 After applying updates, verify the brain file is in sync with the vault's current state:
 
@@ -129,7 +159,7 @@ After applying updates, verify the brain file is in sync with the vault's curren
 
 Update CLAUDE.md directly for any gaps found. This ensures the navigation layer stays accurate after every update, not just at end-of-day.
 
-### Step 9: Report
+### Step 10: Report
 
 Summarize what was applied:
 - Items added

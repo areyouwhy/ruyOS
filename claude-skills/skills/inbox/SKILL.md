@@ -7,6 +7,22 @@ description: "Triage and process items in the ruyOS capture inbox. Use when the 
 
 Process everything in `Workflow/Capture/` and route each item to its permanent home in the vault.
 
+## Vault detection
+
+Before doing anything, check if the current workspace is a ruyOS vault:
+
+1. Look for `CLAUDE.md` at the workspace root containing the word "ruyOS"
+2. Look for the `Workflow/` folder
+
+**If BOTH exist** → this is a ruyOS vault. Proceed normally below.
+**If EITHER is missing** → tell the user:
+
+> Inbox triage needs direct access to the vault. Please open your ruyOS vault folder in Cowork and run `/inbox` from there.
+
+Then stop. Do not attempt to process inbox from outside the vault.
+
+---
+
 ## Context sources
 
 Read these files before executing:

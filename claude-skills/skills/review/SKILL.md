@@ -7,6 +7,22 @@ description: "Priority review and realignment for a ruyOS vault. Use when the us
 
 Analyze alignment between current work, stated priorities, and goals. Surface observations and facilitate realignment.
 
+## Vault detection
+
+Before doing anything, check if the current workspace is a ruyOS vault:
+
+1. Look for `CLAUDE.md` at the workspace root containing the word "ruyOS"
+2. Look for the `Workflow/` folder
+
+**If BOTH exist** → this is a ruyOS vault. Proceed normally below.
+**If EITHER is missing** → tell the user:
+
+> Priority review needs direct access to the vault — it reads your tasks, goals, focus, and daily notes. Please open your ruyOS vault folder in Cowork and run `/review` from there.
+
+Then stop. Do not attempt to review from outside the vault.
+
+---
+
 ## Context sources
 
 Read ALL of these before starting:

@@ -7,6 +7,51 @@ description: "Save something to a ruyOS vault. Use when the user says 'remember 
 
 Save something to the vault. Determine where the information belongs using the save routing table, then store it in the right place.
 
+## Vault detection
+
+Before doing anything, check if the current workspace is a ruyOS vault:
+
+1. Look for `CLAUDE.md` at the workspace root containing the word "ruyOS"
+2. Look for the `Workflow/` folder
+
+**If BOTH exist** → this is a ruyOS vault. Proceed with "Vault mode" below.
+**If EITHER is missing** → this is not the vault. Use "Roaming mode" below.
+
+---
+
+## Roaming mode (no vault detected)
+
+You're outside the ruyOS vault. Save the information to auto-memory so it can be routed to the correct vault location later.
+
+### What to do
+
+1. **Categorize** — Read the user's input. Determine what type of information it is using the save routing table (in Vault mode below).
+2. **Save to auto-memory** — Write a memory file:
+   - **Filename**: `ruyos-remember-YYYY-MM-DD-HHmm.md`
+   - **Frontmatter**:
+     ```yaml
+     ---
+     name: ruyos-remember-YYYY-MM-DD-HHmm
+     description: "ruyOS remember — [type]: [brief description]"
+     type: project
+     ---
+     ```
+   - **Body**:
+     ```markdown
+     ## Remember: [title]
+     **Date**: YYYY-MM-DD
+     **Category**: [task / decision / insight / meeting / etc.]
+     **Intended destination**: [vault path from routing table]
+
+     [The actual content to save, formatted appropriately]
+     ```
+3. **Confirm** — Tell the user what was saved and where it will go when synced:
+   > Saved to memory. This will be filed to `[destination]` next time you run `/start-day` in your vault.
+
+---
+
+## Vault mode (vault detected)
+
 ## Save routing
 
 Use this table to decide where to save:

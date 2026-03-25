@@ -7,7 +7,74 @@ description: "Daily wrap-up for a ruyOS vault. Use when the user says 'end my da
 
 Daily wrap-up for the vault. Review what happened, log decisions, archive tasks, and close out the day.
 
-## Context sources
+## Vault detection
+
+Before doing anything, check if the current workspace is a ruyOS vault:
+
+1. Look for `CLAUDE.md` at the workspace root containing the word "ruyOS"
+2. Look for the `Workflow/` folder
+
+**If BOTH exist** → this is a ruyOS vault. Proceed with "Vault mode" below.
+**If EITHER is missing** → this is not the vault. Use "Roaming mode" below.
+
+---
+
+## Roaming mode (no vault detected)
+
+You're running outside the ruyOS vault. Capture the day's wrap-up to auto-memory so it can be synced next time the user opens the vault.
+
+### Step 1: Review the day
+
+Review the conversation for everything that happened — accomplishments, decisions, insights, new tasks, things learned.
+
+### Step 2: Save to auto-memory
+
+Write a memory file to the auto-memory directory:
+
+- **Filename**: `ruyos-endday-YYYY-MM-DD.md`
+- **Frontmatter**:
+  ```yaml
+  ---
+  name: ruyos-endday-YYYY-MM-DD
+  description: "ruyOS end-of-day wrap-up — [brief context]"
+  type: project
+  ---
+  ```
+- **Body** — structured as:
+  ```markdown
+  ## End of day: YYYY-MM-DD
+  **Source**: [which Cowork project this was captured from]
+
+  ### Accomplished
+  - [what got done today]
+
+  ### Decisions
+  - [decisions made, with context/why]
+
+  ### Carry forward
+  - [unfinished items for tomorrow]
+
+  ### Tasks completed
+  - [tasks that should move to Done.md]
+
+  ### New tasks
+  - [tasks that emerged today]
+
+  ### Learnings
+  - [writing rules, insights, preferences discovered]
+  ```
+
+### Step 3: Tell the user
+
+> Saved end-of-day wrap-up to memory. Next time you open your vault and run `/start-day`, I'll sync everything — daily note, tasks, decisions, and learnings — into the vault.
+
+Done.
+
+---
+
+## Vault mode (vault detected)
+
+### Context sources
 
 Read these files from the vault before executing:
 
@@ -15,8 +82,6 @@ Read these files from the vault before executing:
 - Workflow/Tasks/Active.md
 - Workflow/Knowledge/Decisions/Decisions.md
 - Context/Professional/Writing Preferences.md (for any new rules learned)
-
-## What to do
 
 ### Step 1: Gather context
 
@@ -53,12 +118,29 @@ For any significant decisions made today, add them to `Workflow/Knowledge/Decisi
 - **Writing rules or preferences** learned today → append to `Context/Professional/Writing Preferences.md` in the Living Rules section.
 - **Insights** → save to `Workflow/Knowledge/Insights/` if significant.
 
-### Step 6: Day summary
+### Step 6: CLAUDE.md health check
+
+Scan for routing gaps by comparing the vault's actual state against CLAUDE.md:
+
+1. **New files without routes** — List any files created today (check daily note log, new project folders, new context files) that aren't covered by the Knowledge Routing or Save Routing tables in CLAUDE.md. For example, if a new project folder `Projects/Unity Game/` was created today but the routing table still only has the generic `Projects/<project-name>/` entry, that's fine. But if a new top-level category was added (e.g., `Workflow/Knowledge/Patterns/`), the routing table needs updating.
+
+2. **Dead routes** — Check if any paths referenced in CLAUDE.md's routing tables point to files that no longer exist (deleted or renamed during the day).
+
+3. **New living rules** — If any writing rules, communication preferences, or general conventions were established today, check they're reflected in the Living Rules section of CLAUDE.md.
+
+If gaps are found:
+- Update CLAUDE.md directly — add new routes, remove dead ones, add new rules.
+- Mention the updates briefly in the day summary: "Updated CLAUDE.md: added route for X, removed stale route for Y."
+
+If everything is clean, skip silently.
+
+### Step 7: Day summary
 
 Finish with a quick summary for the user:
 - What got done
 - What carries forward
 - Any decisions logged
+- CLAUDE.md updates (if any)
 
 ## Rules
 

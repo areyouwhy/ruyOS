@@ -115,13 +115,28 @@ When merging CLAUDE.md:
 
 Write the new version to `.ruyos-version` and copy the repo's `.ruyos-manifest.json` to the vault, replacing the old one. This ensures the next update can diff efficiently against what was just installed.
 
-### Step 8: Report
+### Step 8: CLAUDE.md health check
+
+After applying updates, verify the brain file is in sync with the vault's current state:
+
+1. **New routes needed** — If the update added new folders, files, or structural changes (e.g., a new `Workflow/Knowledge/Patterns/` folder), check that CLAUDE.md's Knowledge Routing and Save Routing tables have entries pointing to them. Add any missing routes.
+
+2. **Dead routes** — If the update removed or renamed files/folders, check that CLAUDE.md doesn't still point to the old paths. Fix any stale routes.
+
+3. **New conventions** — If the update introduced new tags, frontmatter fields, or structural conventions, add them to the Conventions section of CLAUDE.md.
+
+4. **Skill Integration section** — Verify the Skill Integration section still accurately describes how skills should reference vault context.
+
+Update CLAUDE.md directly for any gaps found. This ensures the navigation layer stays accurate after every update, not just at end-of-day.
+
+### Step 9: Report
 
 Summarize what was applied:
 - Items added
 - Items updated
 - Items skipped
 - New version number
+- CLAUDE.md updates (if any)
 
 If new skills were added, briefly describe what each one does.
 

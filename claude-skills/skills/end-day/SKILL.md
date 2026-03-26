@@ -89,13 +89,16 @@ Read these files from the vault before executing:
 2. **Active tasks** — Read `Workflow/Tasks/Active.md` to see what was on the list.
 3. **Conversation review** — Review this conversation for any decisions, insights, or rules learned during the session.
 
-### Step 2: Update today's daily note
+### Step 2: Write to daily note under `# Summary`
 
-Update the daily note with:
+Write to the sections under `# Summary` in today's daily note:
 
-- **Log section** — Summary of what was accomplished today. Keep it factual and concise.
-- **Tomorrow section** — Flag anything unfinished that should carry forward.
-- **Decisions section** — List any significant decisions made.
+- **`## Log`** — Write or finalize the narrative summary of the day. If end-session already wrote partial log entries, build on them — add any remaining work from the current session and write a cohesive day summary. Write in prose, not bullets.
+- **`## Decisions`** — List all significant decisions made today as bullet points. Merge with any decisions already logged by end-session.
+- **`## Learnings`** — List insights, tools discovered, rules learned as bullet points with links.
+- **`## Tomorrow`** — Flag anything unfinished that should carry forward. Be specific enough that tomorrow's start-day can act on these.
+
+Do NOT touch anything under `# Briefing` — that's start-day's territory.
 
 If the daily note doesn't exist yet, create it using the template from `Settings/Templates/Daily Note.md`.
 
@@ -118,7 +121,11 @@ For any significant decisions made today, add them to `Workflow/Knowledge/Decisi
 - **Writing rules or preferences** learned today → append to `Context/Professional/Writing Preferences.md` in the Living Rules section.
 - **Insights** → save to `Workflow/Knowledge/Insights/` if significant.
 
-### Step 6: CLAUDE.md health check
+### Step 6: Update open-threads frontmatter
+
+Update the `open-threads` array in today's daily note frontmatter with the items written to `## Tomorrow`. This makes them machine-readable for start-day to pick up.
+
+### Step 7: CLAUDE.md health check
 
 Scan for routing gaps by comparing the vault's actual state against CLAUDE.md:
 
@@ -134,13 +141,30 @@ If gaps are found:
 
 If everything is clean, skip silently.
 
-### Step 7: Day summary
+### Step 8: Day summary
 
 Finish with a quick summary for the user:
 - What got done
 - What carries forward
 - Any decisions logged
 - CLAUDE.md updates (if any)
+
+## Daily note structure
+
+The daily note has two top-level sections. Start-day owns `# Briefing`. End-session and end-day own `# Summary`.
+
+```
+# Briefing          ← start-day (don't touch)
+  ## From yesterday
+  ## Inbox
+  ## Focus
+# Summary           ← end-session / end-day write here
+  ## Log             ← narrative prose
+  ## Sessions        ← dataview (auto)
+  ## Decisions       ← bullet list
+  ## Learnings       ← bullet list with links
+  ## Tomorrow        ← end-day only
+```
 
 ## Rules
 
@@ -149,3 +173,6 @@ Finish with a quick summary for the user:
 - Direct, concise, no fluff
 - Don't fabricate — only log what actually happened
 - When moving tasks to Done, preserve the task text exactly
+- Do NOT touch anything under `# Briefing` (that's start-day)
+- Write the Log as narrative prose — tell the story of the day
+- The `## Tomorrow` section is end-day exclusive — end-session never writes here

@@ -101,18 +101,18 @@ For any decisions made during the session, append to `Workflow/Knowledge/Decisio
 - What was decided
 - Context / why
 
-### Step 4 (vault): Write session block in daily note
+### Step 4 (vault): Write to daily note under `# Summary`
 
-If today's daily note exists (`Workflow/Log/Daily/YYYY-MM-DD.md`), append a session block to the Log section:
+If today's daily note exists (`Workflow/Log/Daily/YYYY-MM-DD.md`), write to the sections under `# Summary`:
 
-```markdown
-### Session: [context/project name]
-- What was accomplished
-- Key decisions made
-- Open items carrying forward
-```
+- **`## Log`** — Append a narrative summary of the session. Write in prose — what was accomplished, key context, how things connect. If there are already log entries from earlier sessions, append below them (don't overwrite).
+- **`## Decisions`** — Append any decisions made as bullet points. If the section already has content, add below.
+- **`## Learnings`** — Append any insights, tools discovered, or rules learned as bullet points with links where relevant.
 
-If the daily note doesn't exist, create it from `Settings/Templates/Daily Note.md` and then add the session block.
+Do NOT write to `## Tomorrow` — that's end-day's job.
+Do NOT touch anything under `# Briefing` — that's start-day's territory.
+
+If the daily note doesn't exist, create it from `Settings/Templates/Daily Note.md` and then write to the Summary sections.
 
 ### Step 5 (vault): Update project notes (if applicable)
 
@@ -125,12 +125,30 @@ Tell the user:
 - What carries forward
 - Keep it brief — 3-5 lines max
 
+## Daily note structure
+
+The daily note has two top-level sections. Start-day owns `# Briefing`. End-session and end-day own `# Summary`.
+
+```
+# Briefing          ← start-day (don't touch)
+  ## From yesterday
+  ## Inbox
+  ## Focus
+# Summary           ← end-session / end-day write here
+  ## Log             ← append session narrative here
+  ## Sessions        ← dataview (auto)
+  ## Decisions       ← append here
+  ## Learnings       ← append here
+  ## Tomorrow        ← end-day only
+```
+
 ## Rules
 
 - This is a save-point, not a closing ceremony — keep it light
 - Do NOT archive tasks to Done.md (that's end-day)
-- Do NOT write "Tomorrow" items (that's end-day)
-- Do NOT do the full daily note wrap-up (that's end-day)
+- Do NOT write `## Tomorrow` items (that's end-day)
+- Do NOT touch anything under `# Briefing` (that's start-day)
+- Write the Log as narrative prose, not bullet lists — tell the story of what happened
 - Use wikilinks (`[[Note Name]]`) for internal references
 - Preserve existing frontmatter and content when editing notes
 - Don't fabricate — only log what actually happened in this session
